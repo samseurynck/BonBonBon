@@ -1,0 +1,54 @@
+{{#if banners.top}}
+<!-- <div class="banners" data-banner-location="top">
+    <div class="banner">
+        {{{limit banners.top 1}}}
+    </div>
+</div> -->
+{{/if}}
+<header class="header" role="banner">
+    <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+        <svg width="30px" height="20px" viewBox="0 0 30 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>icon-menu</title>
+            <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Mobile---Homepage" transform="translate(-10.000000, -17.000000)" fill="#000000">
+                    <g id="Mobile/Header">
+                        <g id="icon-menu" transform="translate(10.000000, 17.000000)">
+                            <rect id="Rectangle-12" x="0" y="0" width="30" height="4"></rect>
+                            <rect id="Rectangle-12-Copy" x="0" y="8" width="30" height="4"></rect>
+                            <rect id="Rectangle-12-Copy-2" x="0" y="16" width="30" height="4"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+        <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>icon-menu-x</title>
+            <g id="Homepage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Mobile---Menu-Open" transform="translate(-13.000000, -15.000000)" fill="#000000">
+                    <g id="Mobile/Header">
+                        <g id="icon-menu-x" transform="translate(3.000000, 5.000000)">
+                            <path d="M20,20 L7,20 L7,24 L20,24 L20,37 L24,37 L24,24 L37,24 L37,20 L24,20 L24,7 L20,7 L20,20 Z" id="Combined-Shape" transform="translate(22.000000, 22.000000) rotate(-45.000000) translate(-22.000000, -22.000000) "></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </a>
+    {{> components/common/navigation}}
+
+    {{#if page_type '===' 'default'}}
+        <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> components/common/store-logo}}
+        </h1>
+    {{else}}
+        <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+            {{> components/common/store-logo}}
+        </div>
+    {{/if}}
+    {{{region name="header_bottom"}}}
+    <div class="navPages--dummy" style="width: 100%; display: none;"></div>
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/navigation-menu}}
+    </div>
+
+</header>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <rect id="form-checkbox-selected-a" width="21" height="21"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#FFF" xlink:href="#form-checkbox-selected-a"/>
+    <rect width="20" height="20" x=".5" y=".5" stroke="#000"/>
+    <polyline stroke="#000" stroke-linecap="square" stroke-width="3" points="5 11.686 9.027 15.224 15.854 6"/>
+  </g>
+</svg>

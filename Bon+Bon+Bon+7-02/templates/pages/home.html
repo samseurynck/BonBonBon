@@ -1,0 +1,105 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{#if carousel}}
+        {{> components/carousel}}
+    {{/if}}
+    {{{snippet 'home_content'}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+<div class="main full">
+
+    <a href="/bon-builder/" class="box-box-box-builder-button"></a>
+
+    <section class="homepage-meet-the-babes">
+        <a href="/about/">
+            <img src="{{cdn 'img/homepage/cta-story.jpg'}}" alt="Two women working on a colorful place. There is a big plate with chocolates on a table">
+            <div class="meet-the-babes-cotainer">
+                <p>MEET THE BABES!</p>
+                <p>READ OUR STORY {{> components/custom/right-orange-caret }}</p>
+            </div>
+        </a>
+    </section>
+
+    <section class="homepage-chocolate-class">
+        <a href="/classes/" class="homepage-take-a-class">
+            <img src="{{cdn 'img/homepage/cta-class.jpg'}}" alt="A diagonal positioned chocolate box. Right to it, a stamp reading 'Chocolate'">
+            <div class="take-a-class-container">
+                <p>WORKSHOPS!</p>
+                <p>CHECK THE DATES {{> components/custom/right-orange-caret }}</p>
+            </div>
+        </a>
+        <div class="homepage-animated-packing-container">
+            <img src="{{cdn 'img/homepage/packaging-C-360x360.gif'}}" alt="A gif animated showing how some chocolates are packaged in a box which is initially a cross shape, then it folds">
+        </div>
+    </section>
+
+    <section class="homepage-swag-section">
+        <div class="homepage-animated-packing-container">
+            <img src="{{cdn 'img/homepage/packaging-D-360x360.gif'}}" alt="A gif animated showing how some chocolates are packaged in a box, then it folds">
+        </div>
+        <a href="/swag-such/" class="homepage-swag-swag">
+            <img src="{{cdn 'img/homepage/cta-swag.jpg'}}" alt="A couple of black t-shirts laying at the bottom of the section on a white surface. Bon Bon Bon is written on them" class="swag-desktop">
+            <img src="{{cdn 'img/homepage/cta-swag-mobile.jpg'}}" alt="A couple of black t-shirts laying at the bottom of the section on a white surface. Bon Bon Bon is written on them" class="swag-mobile">
+            <div class="swag-container">
+                <p>SWAG SWAG SWAG!</p>
+                <p>SHOP COOL STUFF {{> components/custom/right-orange-caret }}</p>
+            </div>
+        </a>
+    </section>
+
+    <section class="homepage-bon-builder-section">
+        <a href="/bon-builder/">
+            <img src="{{cdn 'img/homepage/cta-builder.jpg'}}" alt="First section of the image has a grid of equally spaced rectangular bons on a ping background color. Second section is a textured image of a brown box">
+            <div class="bon-builder-container">
+                <p>BUILD YOUR OWN BOX BOX BOX!</p>
+                <p>PICK YOUR OWN BONS {{> components/custom/right-orange-caret }}</p>
+            </div>
+        </a>
+    </section>
+
+    {{#if products.featured}}
+        {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+    {{/if}}
+
+    <section class="homepage-pay-visit-section">
+        <a href="/locations/">
+            <div class="pay-visit-container">
+                <p>PAY US A VISIT!</p>
+                <p>We love making new friends! Swing by and say “hi” at our shops in Downtown Detroit and Hamtramck, Michigan.</p>
+                <p>SEE HOURS & LOCATIONS {{> components/custom/right-orange-caret }}</p>
+            </div>
+        </a>
+    </section>
+
+    <section class="homepage-instagram-section">
+        <div id="instafeed"></div>
+    </section>
+
+    <!-- {{#if products.top_sellers}}
+        {{> components/products/top products=products.top_sellers columns=theme_settings.homepage_top_products_column_count}}
+    {{/if}}
+
+    {{#if products.new}}
+        {{> components/products/new products=products.new columns=theme_settings.homepage_new_products_column_count}}
+    {{/if}} -->
+</div>
+{{/partial}}
+{{> layout/base}}

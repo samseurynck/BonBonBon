@@ -1,0 +1,119 @@
+// =============================================================================
+// TYPE (CSS)
+// =============================================================================
+
+// Stencil type component additions
+// -----------------------------------------------------------------------------
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Futura-Book", "Futura", Arial, Helvetica, sans-serif;
+    font-size: $body-fontSize;
+    // font-weight: $body-font-weight;
+    font-weight: normal;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: $header-font-weight;
+    margin-top: $heading-marginTop;
+}
+
+h5,
+h6 {
+    text-transform: $heading-textTransform;
+}
+
+a {
+    transition:      $anchor-transition;
+    text-decoration: none;
+    color:           black;
+
+    &:hover {
+        color:           #E9B3B3;
+        text-decoration: none;
+    }
+}
+
+cite {
+    line-height: $blockquote-cite-lineHeight;
+    margin: $blockquote-cite-margin;
+}
+
+.page-heading {
+    margin:         0 0 spacing("double");
+    text-align:     left;
+    font-family:    StencilGothic;
+    font-size:      68px;
+    line-height:    68px;
+    text-transform: uppercase;
+    color:          #000000;
+
+    @media (max-width: 551px) {
+        font-family: StencilGothic;
+        font-size:   30px;
+        line-height: 30px;
+        color:       #000000;
+    }
+
+    &.category-heading{
+
+        font-family:   StencilGothic;
+        font-size:     30px;
+        color:         #000000;
+        margin-top:    10px;
+        margin-bottom: 0;
+
+        @include breakpoint("medium") {
+            font-size: 68px;
+        }
+
+    }
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+h3 {
+    font-size: $h3-font-size;
+}
+
+h4 {
+    font-size: $h4-font-size;
+}
+
+h5 {
+    font-size: $h5-font-size;
+}
+
+h6 {
+    font-size: $h6-font-size;
+}
+
+.definitionList {
+    @include clearfix;
+}
+
+.definitionList-key {
+    color: stencilColor("color-textSecondary");
+    float: left;
+    font-weight: fontWeight("normal");
+    margin: 0 spacing("quarter") 0 0;
+}
+
+.definitionList-value {
+    margin: 0;
+}
