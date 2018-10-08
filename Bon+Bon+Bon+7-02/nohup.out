@@ -1,0 +1,50 @@
+(node:47127) [DEP0022] DeprecationWarning: os.tmpDir() is deprecated. Use os.tmpdir() instead.
+
+[34m                                     `+h
+[39m[34m                                   `+ddd
+[39m[34m                                 .oddddd
+[39m[34m                               .oddddddd
+[39m[34m                             -sddddddddd
+[39m[34m                          `-sddddddddddd
+[39m[34m                         -shdddddddddddd
+[39m[34m                         ...-:+ydddddddd
+[39m[34m                    `......`   `+ddddddd
+[39m[34m                    -ddddddh-    ddddddd
+[39m[34m                `   .yyyyyyo.  `+ddddddd
+[39m[34m              .o/    `````    :ydddddddd
+[39m[34m            -ohd+   `//////:` `.sddddddd
+[39m[34m          -sdddd+   -ddddddds   `hdddddd
+[39m[34m        :sdddddd+   .sssssso-   `ddddddd
+[39m[34m      :ydddddddd+              -yddddddd
+[39m[34m    /yddddddddddy+++++++++++oshddddddddd
+[39m[34m `/hdddddddddddddddddddddddddddddddddddd
+[39m[34m/hdddddddddddddddddddddddddddddddddddddd
+[39m[37m_________________________
+[39m
+[33mBigCommerce Stencil 
+[39m[37m_________________________
+[39m
+
+[90m-----------------Startup Information-------------
+[39m
+.stencil location: [36m/Users/Samantha/Documents/Development/BonBonBon/BonBonBon/Bon+Bon+Bon+7-02/.stencil[39m
+config.json location: [36m/Users/Samantha/Documents/Development/BonBonBon/BonBonBon/Bon+Bon+Bon+7-02/config.json[39m
+Store URL: [36mhttps://bonbonbon.com[39m
+SSL Store URL: [36mhttps://bonbonbon.com[39m
+Node Version: [36mv8.12.0[39m
+
+[90m-------------------------------------------------
+[39m
+[Browsersync] Proxying: http://localhost:3001
+[Browsersync] Access URLs:
+ -------------------------------------
+       Local: http://localhost:3000
+    External: http://192.168.1.65:3000
+ -------------------------------------
+          UI: http://localhost:3002
+ UI External: http://192.168.1.65:3002
+ -------------------------------------
+[Browsersync] Watching files...
+(node:47128) DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic, see https://github.com/webpack/loader-utils/issues/56
+parseQuery() will be replaced with getOptions() in the next major version of loader-utils.
+[Browsersync] Reloading Browsers...

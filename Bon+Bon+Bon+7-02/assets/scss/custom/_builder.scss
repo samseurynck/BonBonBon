@@ -25,7 +25,7 @@
         min-height:          100vh;
         background-image:    url("../img/bon_builder/intro/builder-stamp-heart-go.png"),
                              url("../img/bon_builder/intro/b-img-builder-chocolate.png"),
-                             url("../img/bon_builder/intro/b-img-bon-repeat-01"),
+                             url("../img/bon_builder/intro/b-img-bon-repeat-01.png"),
                              url("../img/bon_builder/intro/b-img-horiz-cardboard-edge.png"),
                              url("../img/header/texture-cardboard@2x.jpg");
         background-position: 1150px 350px,             210px 600px,              top center,       left 300px,       center center;
@@ -43,7 +43,7 @@
         }
 
         @media (max-width: 551px) {
-            background-image:    url("../img/bon_builder/intro/b-img-bon-repeat-01"),
+            background-image:    url("../img/bon_builder/intro/b-img-bon-repeat-01.png"),
                                  url("../img/bon_builder/intro/b-img-horiz-cardboard-edge.png"),
                                  url("../img/header/texture-cardboard@2x.jpg");
             background-position: top center,       left 150px,       center center;
