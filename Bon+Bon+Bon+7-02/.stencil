@@ -6,7 +6,12 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+      "about.html": "/about/",
+      "bon-builder.html": "/bon-builder/",
+      "contact-us.html": "/contact-us/",
+      "locations.html": "/locations/"
+    },
     "product": {}
   }
 }
