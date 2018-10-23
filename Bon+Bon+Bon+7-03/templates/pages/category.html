@@ -1,0 +1,44 @@
+---
+category:
+    shop_by_price: true
+    products:
+        limit: {{theme_settings.categorypage_products_per_page}}
+---
+{{inject "categoryProductsPerPage" theme_settings.categorypage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="category-bonbonbon-container">
+    <a href="/bon-builder/" class="box-box-box-builder-button"></a>
+    <img src="{{cdn 'img/bon_builder/intro/b-img-builder-chocolate.png'}}" alt="Chocolate; soon to be bons">
+</div>
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<h1 class="page-heading category-heading">{{category.name}}</h1>
+{{#if category.image}}
+    <img src="{{getImage category.image 'zoom_size'}}">
+{{/if}}
+
+{{{category.description}}}
+{{{snippet 'categories'}}}
+<div class="page">
+    <main class="page-content" id="product-listing-container">
+        {{#if category.products}}
+            {{> components/category/product-listing}}
+        {{else}}
+            <p>{{lang 'categories.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

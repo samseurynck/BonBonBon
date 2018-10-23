@@ -1,0 +1,36 @@
+<div class="cart-notes-container" data-product-name="{{name}}">
+    {{#if gift_wrapping}}
+
+        {{#if name '==' 'CUSTOM BON BOX'}}
+        {{else}}
+            <div class="cart-notes-message-container">
+                <p class="cart-notes-message" data-item-note="{{id}}">{{gift_wrapping.message}}</p>
+                <div>
+                    <button class="cart-notes--edit-button">EDIT PERSONAL NOTE</button>
+                </div>
+            </div>
+            <div class="cart-notes-input-container cart-notes--invisible">
+                <textarea cols="30" rows="10"></textarea>
+                <div class="cart-notes-input-container--actions">
+                    <button class="cart-notes-input-container--save-button" data-item-note="{{id}}">SAVE</button>
+                    <button class="cart-notes-input-container--cancel-button">CANCEL</button>
+                </div>
+            </div>
+        {{/if}}
+    {{else}}
+
+        {{#if name '==' 'CUSTOM BON BOX'}}
+        {{else}}
+            <div class="cart-notes--add-link">
+                <button class="cart-notes--add-button cart-notes--invisible">ADD PERSONAL NOTE</button>
+            </div>
+            <div class="cart-notes-input-container cart-notes--invisible">
+                <textarea cols="30" rows="10"></textarea>
+                <div class="cart-notes-input-container--actions">
+                    <button class="cart-notes-input-container--save-button" data-item-note="{{id}}">SAVE</button>
+                    <button class="cart-notes-input-container--cancel-button">CANCEL</button>
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+</div>

@@ -1,0 +1,32 @@
+{{#partial "page"}}
+
+<section class="page">
+    <div class="page-content page-content--centered">
+        <style>
+            .page-heading {
+                font-family:    Futura-Bold;
+                font-size:      46px;
+                color:          #000000;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+        </style>
+        <h1 class="page-heading">
+            {{#if subscription.error}}
+                {{lang 'newsletter.subscribed_heading_error'}}
+            {{else}}
+                {{lang 'newsletter.subscribed_heading'}}
+            {{/if}}
+        </h1>
+
+        {{#if subscription.error}}
+            {{> components/common/alert-error subscription.error}}
+        {{else}}
+            {{> components/common/alert-success (lang 'newsletter.subscribed_message')}}
+        {{/if}}
+
+    </div>
+</section>
+
+{{/partial}}
+{{> layout/base}}
