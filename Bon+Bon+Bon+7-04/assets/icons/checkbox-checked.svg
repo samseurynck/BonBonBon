@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>form-checkbox-selected</title>
+    <defs>
+
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Style-Guide" transform="translate(-637.000000, -3991.000000)">
+            <g id="Checkbox-Copy" transform="translate(637.000000, 3984.000000)">
+                <g id="UI-Checkbox" transform="translate(0.000000, 7.000000)">
+                    <g id="form-checkbox-selected">
+                        <g id="Rectangle-4">
+                            <rect id="path-1" x="0" y="0" width="21" height="21" fill="#FFFFFF" fill-rule="evenodd"></rect>
+                            <rect stroke="#000000" stroke-width="1" x="0.5" y="0.5" width="20" height="20"></rect>
+                        </g>
+                        <polyline id="Path-2" stroke="#000000" stroke-width="3" stroke-linecap="square" points="5 11.6860352 9.02734375 15.2236328 15.8540039 6"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

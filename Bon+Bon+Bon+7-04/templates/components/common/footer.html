@@ -1,0 +1,76 @@
+{{#if banners.bottom}}
+<div class="banners" data-banner-location="bottom">
+    <div class="banner">
+        {{{limit banners.bottom 1}}}
+    </div>
+</div>
+{{/if}}
+<footer class="footer" role="contentinfo">
+    <div class="footer-desktop">
+        <div class="container">
+            <div class="footer-navigation-container">
+                <article data-section-type="footer-webPages">
+                    <ul class="footer-info-list">
+                        {{#each pages}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </article>
+            </div>
+
+            <div class="footer-addresses-container">
+                <div>
+                    <p>HAMTRAMCK <br>MANUFACTORY</p>
+                    <p>11360 Joseph Campau Ave., <br>Hamtramck, MI 48212 <br>Mon–Sat 11–6, Sun 11–3</p>
+                </div>
+                <div>
+                    <p>DOWNTOWN <br>DETROIT</p>
+                    <p>719 Griswold St., Suite 100, <br>Detroit, MI 48226 <br>Mon–Fri 10–6, Sat–Sun 10–3</p>
+                </div>
+            </div>
+
+            <div class="footer-contact-container">
+                <div>
+                    <p>EMAIL</p>
+                    <p>
+                        <a href="mailto:BonBonBon@BonBonBon.com">BonBonBon@BonBonBon.com</a>
+                    </p>
+                    <p>REACH OUT 24/7</p>
+                </div>
+                <div>
+                    <h5 class="footer-info-heading">CALL</h5>
+                    <p>
+                        Hamtramck:
+                        <strong>
+                            <a href="tel:3132365581">313-236-5581</a>
+                        </strong>
+                    </p>
+                    <p>
+                        Detroit:
+                        <strong>
+                            <a href="tel:3133161430">313-316-1430</a>
+                        </strong>
+                    </p>
+                </div>
+            </div>
+
+            <article class="footer-newsletter-container" data-section-type="newsletterSubscription">
+                {{#if settings.show_newsletter_box}}
+                    <div>
+                        {{> components/common/subscription-form}}
+                    </div>
+                {{/if}}
+                <article class="footer-social-links-container" data-section-type="footer-webPages">
+                    {{> components/common/social-links}}
+                </article>
+                {{#if theme_settings.show_copyright_footer}}
+                    <div class="footer-copyright">
+                        <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
+                    </div>
+                {{/if}}
+            </article>
+        </div>
+    </div>
+</footer>

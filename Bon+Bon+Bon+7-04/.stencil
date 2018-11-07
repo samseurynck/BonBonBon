@@ -1,0 +1,18 @@
+{
+  "normalStoreUrl": "http://bonbonbon.com",
+  "port": 3000,
+  "clientId": "jemghic8iwlzm2go0cogf8e8103y42d",
+  "accessToken": "hbeyj2j25d5ak6u1cf5qxyfnwgd7rj5",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {
+      "about": "/about/",
+      "bon-builder": "/bon-builder/",
+      "contact-us": "/contact-us/",
+      "locations": "/locations/",
+      "shop-bonline": "/shop-bonline/"
+    },
+    "product": {}
+  }
+}

@@ -1,0 +1,1454 @@
+// =============================================================================
+// Stencil Checkout  - Customize the checkout experience
+// =============================================================================
+//
+// This file is for checkout customizations for Default one-page checkout.
+//
+// -----------------------------------------------------------------------------
+@font-face {
+    font-family: "StencilGothic";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/stencilgothic-webfont.woff2") format("woff2"),
+         url("../fonts/stencilgothic-webfont.woff") format("woff"),
+         url("../fonts/StencilGothic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: 'Futura-Bold';
+    src: url('../fonts/34C539_0_0.eot');
+    src: url('../fonts/34C539_0_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/34C539_0_0.woff2') format('woff2'),
+         url('../fonts/34C539_0_0.woff') format('woff'),
+         url('../fonts/34C539_0_0.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'Futura-Book';
+    src: url('../fonts/34C539_1_0.eot');
+    src: url('../fonts/34C539_1_0.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/34C539_1_0.woff2') format('woff2'),
+         url('../fonts/34C539_1_0.woff') format('woff'),
+         url('../fonts/34C539_1_0.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'PTMono-Bold';
+    src: url('../fonts/PTM55FT.ttf') format('truetype');
+}
+
+#Header {
+    background-image:  url('../img/header/texture-cardboard@2x.jpg');
+    background-repeat: repeat;
+    background-size:   50%;
+}
+
+.main {
+    background-image:    url('../img/bon_builder/review/texture-white-specs@2x.jpg');
+    background-repeat:   repeat;
+    background-size:     50%;
+    background-position: left top;
+    display:             block;
+    position:            relative;
+
+    &::after {
+        content:             '';
+        position:            absolute;
+        top:                 -2rem;
+        right:               20vw;
+        width:               110px;
+        height:              48px;
+        background-image:    url("../img/cart_checkout/b-img-chocolate-crumbs.png");
+        background-position: center bottom;
+
+        @media (max-width: 551px) {
+            right:  0;
+            height: 74px;
+        }
+    }
+}
+
+.Content,
+.clear {
+    overflow: unset !important;
+}
+
+.inner {
+    background-color: transparent !important;
+}
+
+.header-logo {
+
+    @media (min-width: 551px) {
+        height: 20px;
+    }
+
+    a {
+        position: absolute;
+        left:     10px;
+        top:      0;
+    }
+
+    img {
+        position: relative;
+        width:    100px;
+        z-index:  1;
+
+        @media (max-width: 551px) {
+            max-height: unset;
+            width:      60px;
+        }
+    }
+}
+
+h2 {
+    font-family: Futura-Bold !important;
+    font-size:   48px !important;
+    color:       #000000 !important;
+
+    @media (max-width: 551px) {
+        font-size:   30px !important;
+    }
+}
+
+h3 {
+    padding-left:   5.5rem !important;
+    padding-top:    26px !important;
+    padding-bottom: 26px !important;
+    font-family:    Futura-Bold !important;
+    font-size:      24px !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase;
+    border-bottom:  solid thin;
+    color:          #000000 !important;
+    pointer-events: none;
+
+    @media (max-width: 551px) {
+        padding-left: 1rem !important;
+        margin-right: 0 !important;
+        font-size:    18px !important;
+    }
+}
+
+h4 {
+    font-family:    Futura-Bold !important;
+    font-size:      20px !important;
+    letter-spacing: 1px !important;
+    text-transform: none;
+    color:          #000000 !important;
+
+    @media (max-width: 551px) {
+        font-size: 18px !important;
+    }
+}
+
+p {
+    font-family:    Futura-Book;
+    font-size:      16px;
+    color:          #000000;
+    letter-spacing: 1px;
+    line-height:    20px;
+
+    @media (max-width: 551px) {
+        font-size: 14px;
+    }
+}
+
+label,
+.PL20,
+.ShippingProviderList {
+    font-family:    PTMono-Bold;
+    font-size:      16px;
+    font-weight:    bold;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    color:          #000000;
+
+    @media (max-width: 551px) {
+        font-size: 14px;
+    }
+
+    .radio {
+        width:  28px !important;
+        height: 28px !important;
+
+        span {
+            width:    28px !important;
+            height:   28px !important;
+            position: relative;
+
+            &::after {
+                content:             '';
+                position:            absolute;
+                top:                 0px;
+                left:                0px;
+                right:               -2px;
+                bottom:              -2px;
+                background-image:    url("../icons/radio.svg");
+                background-repeat:   no-repeat;
+                background-position: center;
+                pointer-events:      none;
+            }
+
+            &.checked::after {
+                background-image: url("../icons/radio-selected.svg");
+            }
+        }
+    }
+}
+
+input[type="radio"] {
+    display:  inline-block !important;
+}
+
+div.selector {
+    border:           none !important;
+    border-radius:    0 !important;
+    background-color: #fbf1f0 !important;
+    background-image: url('../icons/select-triangle-down.svg') !important;
+
+    span {
+        font-family: PTMono-Bold !important;
+        font-weight: bold !important;
+    }
+}
+
+.btn {
+    border-radius:    10px;
+    padding:          16px 40px;
+    font-family:      Futura-Bold;
+    font-size:        20px;
+    letter-spacing:   1px;
+    color:            #FFFFFF;
+    background-color: #E35737;
+    transition:       background-color 0.3s;
+
+    @media (max-width: 551px) {
+        font-size: 16px;
+    }
+
+    &:hover {
+        background-color: #E9B3B3;
+    }
+}
+
+em.ShipperPrice {
+    font-style: normal;
+}
+
+#LoginForm dd a {
+    color: black;
+
+    &:hover {
+        color: #E9B3B3;
+    }
+}
+
+.ExpressCheckout {
+    margin-top: 2rem;
+}
+
+.WrappingOptions {
+    display: none;
+}
+
+.ExpressCheckoutTitle {
+    .step {
+        display:          inline-block;
+        width:            auto;
+        height:           auto;
+        position:         relative;
+        left:             0;
+        margin-right:     40px;
+        font-family:      StencilGothic;
+        font-size:        24px;
+        letter-spacing:   1px;
+        color:            #000000;
+        background-color: transparent;
+
+        @media (max-width: 551px) {
+            width:          134px !important;
+            display:        block;
+            font-size:      16px;
+            letter-spacing: 0.67px;
+        }
+
+        &::before {
+            content:  'STEP #';
+            position: absolute;
+            left:     -5.5rem;
+
+            @media (max-width: 551px) {
+                left: 0;
+            }
+        }
+    }
+}
+
+.FormContainer {
+    font-family:    Futura-Bold;
+    font-size:      14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:          #000000;
+}
+
+.Textbox {
+    height:           50px !important;
+    margin-bottom:    30px !important;
+    border-radius:    0 !important;
+    border:           none !important;
+    font-family:      PTMono-Bold !important;
+    font-size:        18px !important;
+    letter-spacing:   0 !important;
+    background-color: #fbf1f0 !important;
+    color:            #000000 !important;
+
+    @media (max-width: 551px) {
+        padding-top:    0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    &:focus {
+        border: 3px solid #E9B3B3 !important;
+    }
+}
+
+@media (max-width: 551px) {
+    .ExpressCheckoutContent {
+        max-width: 100%;
+    }
+}
+
+#CheckoutStepAccountDetails {
+    padding-top: 40px;
+
+    @media (min-width: 551px) {
+        background-image:    url('../img/cart_checkout/stamp-good-people.png');
+        background-repeat:   no-repeat;
+        background-position: 18% 73%;
+    }
+
+    &.ExpressCheckoutBlockCollapsed {
+        background-image: none;
+    }
+}
+
+#CheckoutGuestForm dd {
+    margin-bottom: 1rem;
+}
+
+.ExpressCheckoutBlock {
+    border-bottom:  none !important;
+    padding-top:    0;
+    padding-left:   0;
+    padding-right:  0;
+
+    @media (max-width: 551px) {
+        padding-left:  1rem;
+        padding-right: 1rem;
+    }
+
+    &:not(.ExpressCheckoutBlockCollapsed) {
+        border-bottom: solid thin !important;
+    }
+
+    &.ExpressCheckoutBlockCollapsed {
+        padding-bottom: 0;
+    }
+}
+
+.ChangeLink {
+    padding:         10px 26px !important;
+    margin-top:      1.5rem !important;
+    border-radius:   7px !important;
+    font-family:     Futura-Bold !important;
+    font-size:       14px !important;
+    letter-spacing:  1px !important;
+    text-decoration: none;
+    text-transform:  uppercase;
+    border:          2px solid #000000 !important;
+    color:           #000000 !important;
+
+    &:hover {
+        background-color: black;
+        color:            white !important;
+    }
+}
+
+.checkout-account-continue-container {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     center;
+
+    @media (max-width: 551px) {
+        display: block;
+    }
+
+    a {
+        width:           10rem;
+        font-family:     Futura-Bold;
+        font-size:       16px;
+        letter-spacing:  1px;
+        line-height:     20px;
+        text-decoration: none;
+        text-align:      right;
+        color:           #000000;
+        transition:      color 0.3s;
+
+        @media (max-width: 551px) {
+            display:    block;
+            width:      100%;
+            text-align: center;
+        }
+
+        &:hover {
+            color: #E9B3B3;
+        }
+    }
+}
+
+.FormFieldLabel,
+.Required {
+    font-family:    Futura-Bold;
+    font-size:      14px;
+    font-weight:    normal;
+    color:          #000000;
+    letter-spacing: 1px;
+}
+
+.AddBillingAddress .FloatLeft {
+    width: 100%;
+
+    .FormContainer dl {
+        display:               grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap:       20px;
+        grid-row-gap:          16px;
+        width:                 100%;
+
+        @media (max-width: 551px) {
+            display: block;
+        }
+
+        dt,
+        dd {
+            width:          100%;
+            text-align:     left;
+            margin-left:    0;
+            padding-bottom: 0 !important;
+
+            > .Textbox {
+                margin-bottom: 10px !important;
+            }
+        }
+
+
+        // Email
+        & > dt:first-of-type {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            -ms-grid-column-span: 2;
+        }
+
+        & > dd:first-of-type {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            -ms-grid-column-span: 2;
+        }
+
+        // First name
+        & > dt:nth-of-type(2) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(2) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+        // Last name
+        & > dt:nth-of-type(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+
+        // Company Name
+        & > dt:nth-of-type(4) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        & > dd:nth-of-type(4) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 6;
+            grid-row-end: 7;
+        }
+
+        // Phone Number
+        & > dt:nth-of-type(5) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        & > dd:nth-of-type(5) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 6;
+            grid-row-end: 7;
+        }
+
+
+        // Address Line 1
+        & > dt:nth-of-type(6) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 7;
+            grid-row-end: 8;
+        }
+
+        & > dd:nth-of-type(6) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 8;
+            grid-row-end: 9;
+        }
+
+        // Address Line 2
+        & > dt:nth-of-type(7) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 7;
+            grid-row-end: 8;
+        }
+
+        & > dd:nth-of-type(7) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 8;
+            grid-row-end: 9;
+        }
+
+
+        // City
+        & > dt:nth-of-type(8) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 9;
+            grid-row-end: 10;
+        }
+
+        & > dd:nth-of-type(8) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 10;
+            grid-row-end: 11;
+        }
+
+        // Country
+        & > dt:nth-of-type(9) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 9;
+            grid-row-end: 10;
+        }
+
+        & > dd:nth-of-type(9) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 10;
+            grid-row-end: 11;
+        }
+
+
+        // State
+        & > dt:nth-of-type(10) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 11;
+            grid-row-end: 12;
+        }
+
+        & > dd:nth-of-type(10) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 12;
+            grid-row-end: 13;
+        }
+
+        // Zip Code
+        & > dt:nth-of-type(11) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 11;
+            grid-row-end: 12;
+        }
+
+        & > dd:nth-of-type(11) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 12;
+            grid-row-end: 13;
+        }
+
+        // In case of registering a new account, the password fields
+        & > dt:nth-of-type(12) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 13;
+            grid-row-end: 14;
+        }
+
+        & > dd:nth-of-type(12) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 14;
+            grid-row-end: 15;
+        }
+
+        & > dt:nth-of-type(13) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 13;
+            grid-row-end: 14;
+        }
+
+        & > dd:nth-of-type(13) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 14;
+            grid-row-end: 15;
+        }
+
+        & > dd:nth-of-type(14) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 15;
+            grid-row-end: 16;
+            -ms-grid-column-span: 2;
+        }
+
+        & > dd:last-of-type {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 15;
+            grid-row-end: 16;
+            -ms-grid-column-span: 2;
+        }
+    }
+}
+
+.AddShippingAddress .FloatLeft {
+    width: 100%;
+
+    .FormContainer dl {
+        display:               grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap:       20px;
+        grid-row-gap:          16px;
+        width:                 100%;
+
+        @media (max-width: 551px) {
+            display: block;
+        }
+
+        dt,
+        dd {
+            width:          100%;
+            text-align:     left;
+            margin-left:    0;
+            padding-bottom: 0 !important;
+
+            > .Textbox {
+                margin-bottom: 10px !important;
+            }
+        }
+
+
+        // First name
+        & > dt:nth-of-type(1) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        & > dd:nth-of-type(1) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+        // Last name
+        & > dt:nth-of-type(2) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        & > dd:nth-of-type(2) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+
+        // Company Name
+        & > dt:nth-of-type(3) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(3) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+        // Phone Number
+        & > dt:nth-of-type(4) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(4) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+
+        // Address Line 1
+        & > dt:nth-of-type(5) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        & > dd:nth-of-type(5) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 6;
+            grid-row-end: 7;
+        }
+
+        // Address Line 2
+        & > dt:nth-of-type(6) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 5;
+            grid-row-end: 6;
+        }
+
+        & > dd:nth-of-type(6) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 6;
+            grid-row-end: 7;
+        }
+
+
+        // City
+        & > dt:nth-of-type(7) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 7;
+            grid-row-end: 8;
+        }
+
+        & > dd:nth-of-type(7) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 8;
+            grid-row-end: 9;
+        }
+
+        // Country
+        & > dt:nth-of-type(8) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 7;
+            grid-row-end: 8;
+        }
+
+        & > dd:nth-of-type(8) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 8;
+            grid-row-end: 9;
+        }
+
+
+        // State
+        & > dt:nth-of-type(9) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 9;
+            grid-row-end: 10;
+        }
+
+        & > dd:nth-of-type(9) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 10;
+            grid-row-end: 11;
+        }
+
+        // Zip Code
+        & > dt:nth-of-type(10) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 9;
+            grid-row-end: 10;
+        }
+
+        & > dd:nth-of-type(10) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 10;
+            grid-row-end: 11;
+        }
+
+    }
+}
+
+.CartContents {
+    font-family:         PTMono-Bold;
+    font-size:           14px;
+    font-weight:         bold;
+    text-transform:      uppercase;
+    letter-spacing:      1px;
+    color:               #000000;
+    background-image:    url('../img/cart_checkout/stamp-circle-bons.png');
+    background-repeat:   no-repeat;
+    background-position: 1% 40%;
+
+    em.ProductPrice {
+        font-style: normal;
+    }
+
+    thead {
+        background-color: #fbf1f0;
+        // background-color: hsla(5, 58%, 96%, 0.3);
+
+        tr { border-bottom: dashed; }
+    }
+
+    tbody {
+        background-color: #fbf1f0;
+        // background-color: hsla(5, 58%, 96%, 0.3);
+
+        @media (min-width: 551px) {
+            border-bottom: dashed;
+        }
+
+        tr {
+            td {
+                border-bottom: none;
+            }
+
+            @media (max-width: 551px) {
+                display:        flex;
+                flex-direction: column;
+                border-bottom:  dashed 3px black !important;
+
+                & > td {
+                    width: 100% !important;
+                }
+
+                & > td:not(:first-child) {
+                    display:    block;
+                    position:   relative;
+                    text-align: right !important;
+                }
+
+                & > td:nth-child(2)::before {
+                    content:     'QUANTITY';
+                    display:     block;
+                    position:    absolute;
+                    left:        8px;
+                    top:         8px;
+                    font-weight: normal;
+                }
+
+                & > td:nth-child(3)::before {
+                    content:     'ITEM PRICE';
+                    display:     block;
+                    position:    absolute;
+                    left:        8px;
+                    top:         8px;
+                    font-weight: normal;
+                }
+
+                & > td:nth-child(4)::before {
+                    content:     'ITEM TOTAL';
+                    display:     block;
+                    position:    absolute;
+                    left:        8px;
+                    top:         8px;
+                    font-weight: normal;
+                }
+
+                & > td:last-child {
+                    padding-bottom: 30px;
+                }
+            }
+        }
+    }
+
+    tfoot {
+        .Textbox.Field200 {
+            margin-bottom: 0 !important;
+        }
+
+        .SubTotal {
+            @media (max-width: 551px) {
+                display:         flex;
+                justify-content: space-between;
+                border-top:      none !important;
+            }
+
+            td {
+                border-top:    none;
+                border-bottom: none;
+
+                strong {
+                    font-weight: normal;
+                }
+
+                div {
+                    padding: 12px 0;
+                }
+            }
+        }
+
+        .CheckoutRedeemCoupon {
+            background-color: hsla(0, 0%, 100%, 0.3);
+
+            @media (max-width: 551px) {
+                label { line-height: 1rem; }
+
+                .Textbox.Field200 {
+                    margin-bottom: 1rem !important;
+                }
+            }
+        }
+
+        & > tr:last-child {
+            @media (max-width: 551px) {
+                & > td:first-child {
+                    margin-left:  auto;
+                    margin-right: auto;
+                }
+            }
+
+            strong {
+                margin-top: 5px;
+            }
+
+            em:last-of-type {
+                font-family:    PTMono-Bold;
+                font-size:      24px;
+                color:          #000000;
+                letter-spacing: -1px;
+            }
+        }
+    }
+}
+
+.PTB20 strong,
+.PTB20 {
+    font-family:    Futura-Bold;
+    font-size:      20px;
+    font-weight:    normal;
+    letter-spacing: 1px;
+    color:          #000000;
+}
+
+.Field400 {
+    border:           none !important;
+    font-family:      PTMono-Bold;
+    font-size:        18px;
+    font-weight:      bold;
+    letter-spacing:   0;
+    background-color: #fbf1f0;
+    color:            #000000;
+
+    &:focus {
+        border: 3px solid #E9B3B3 !important;
+    }
+}
+
+#provider_list > br {
+    display:       block;
+    width:         1px;
+    margin-bottom: 1rem;
+}
+
+.checker {
+    width:  28px !important;
+    height: 28px !important;
+
+    input {
+        width:  28px !important;
+        height: 28px !important;
+    }
+
+    span {
+        width:            28px !important;
+        height:           28px !important;
+        position:         relative;
+        background-image: none !important;
+
+        &::after {
+            content:             '';
+            position:            absolute;
+            top:                 0px;
+            left:                0px;
+            right:               -2px;
+            bottom:              -2px;
+            background-image:    url("../icons/checkbox.svg");
+            background-repeat:   no-repeat;
+            background-position: center;
+            pointer-events:      none;
+
+            @media (max-width: 551px) {
+                top:    -6px;
+                left:   -6px;
+                right:  0px;
+                bottom: 0px;
+            }
+        }
+
+        &.checked::after {
+            background-image: url("../icons/checkbox-checked.svg");
+        }
+    }
+}
+
+hr {
+    display: none;
+}
+
+.InfoMessage {
+    border:         dashed;
+    padding:        40px 20px;
+    background:     none;
+    text-align:     center;
+    font-family:    Futura-Bold;
+    font-size:      16px;
+    text-transform: uppercase;
+    color:          #000000;
+    letter-spacing: 1px;
+    line-height:    22px;
+
+    @media (min-width: 991px) {
+        padding: 40px 80px;
+    }
+}
+
+#CheckoutStepShippingProvider:not(.ExpressCheckoutBlockCollapsed) {
+    display:  block;
+    position: relative;
+
+    &::after {
+        content:           '';
+        display:           block;
+        position:          absolute;
+        bottom:            20px;
+        left:              130px;
+        width:             349px;
+        height:            147px;
+        background-image:  url('../img/cart_checkout/stamp-this-side.png');
+        background-repeat: no-repeat;
+        pointer-events:    none;
+
+        @media (max-width: 551px) {
+            bottom: 40px;
+            left:   0;
+        }
+    }
+
+    .btn {
+        position: relative;
+        z-index:  2;
+    }
+}
+
+#square-cc-form {
+    display:  block;
+    position: relative;
+
+    &::before {
+        content:           '';
+        display:           block;
+        width:             205px;
+        height:            202px;
+        position:          absolute;
+        bottom:            -60px;
+        left:              15%;
+        background-image:  url('../img/cart_checkout/stamp-circle-bons.png');
+        background-repeat: no-repeat;
+        pointer-events:    none;
+
+        @media (max-width: 551px) {
+            bottom: 40px;
+            left:   -118px;
+        }
+    }
+
+    dl {
+        display:               grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap:       20px;
+        grid-row-gap:          16px;
+        width:                 100%;
+
+        @media (max-width: 551px) {
+            display: block;
+        }
+
+        dt,
+        dd {
+            width:          100%;
+            text-align:     left;
+            margin-left:    0 !important;
+        }
+
+        dd input {
+            height:           50px !important;
+            margin-bottom:    30px !important;
+            border-radius:    0 !important;
+            border:           none !important;
+            font-family:      PTMono-Bold !important;
+            font-size:        18px !important;
+            letter-spacing:   0 !important;
+            background-color: #fbf1f0 !important;
+            color:            #000000;
+
+            &:focus {
+                border: 3px solid #E9B3B3 !important;
+            }
+        }
+
+        // Credit card Number
+        & > dt:first-of-type {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            -ms-grid-column-span: 3;
+        }
+
+        & > dd:first-of-type {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            -ms-grid-column-span: 3;
+        }
+
+        //Expiration Date
+        & > dt:nth-of-type(2) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(2) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+
+        // CVV2
+        & > dt:nth-of-type(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        & > dd:nth-of-type(3) {
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+
+        // Postal Code
+        & > dt:nth-of-type(4) {
+            grid-column-start: 3;
+            grid-column-end:   4;
+            grid-row-start:    3;
+            grid-row-end:      4;
+        }
+
+        & > dd:nth-of-type(4) {
+            grid-column-start: 3;
+            grid-column-end: 4;
+            grid-row-start: 4;
+            grid-row-end: 5;
+        }
+
+
+        // Total
+        & > dt:nth-of-type(5) {
+            margin-top:        3rem;
+            font-family:       PTMono-Bold;
+            font-size:         14px;
+            font-weight:       bold;
+            letter-spacing:    3px;
+            color:             #000000;
+
+            grid-column-start: 1;
+            grid-column-end:   2;
+            grid-row-start:    5;
+            grid-row-end:      6;
+
+            @media (min-width: 551px) {
+                text-align: right !important;
+            }
+
+            @media (max-width: 551px) {
+                text-align: left !important;
+            }
+        }
+
+        & > dd:nth-of-type(5) {
+            font-family:    PTMono-Bold;
+            font-size:      50px;
+            font-weight:    bold;
+            letter-spacing: -2px;
+            line-height:    36px;
+            color:          #000000;
+
+            grid-column-start: 2;
+            grid-column-end:   4;
+            grid-row-start:    5;
+            grid-row-end:      6;
+            -ms-grid-column-span: 2;
+
+            @media (min-width: 551px) {
+                margin-top: 3rem;
+            }
+
+            @media (max-width: 551px) {
+                margin-bottom:  3rem;
+                font-size:      32px;
+                letter-spacing: -1.28px;
+            }
+
+            em {
+                font-style: normal;
+            }
+        }
+    }
+
+    .Submit {
+        display:  block;
+        position: relative;
+
+        @media (min-width: 551px) {
+            float: right;
+
+            &::before {
+                content:           '';
+                display:           block;
+                width:             84px;
+                height:            62px;
+                position:          absolute;
+                top:               0;
+                left:              -90px;
+                background-image:  url('../img/cart_checkout/stamp-arrow-right.png');
+                background-repeat: no-repeat;
+            }
+
+            &::after {
+                content:           '';
+                display:           block;
+                width:             84px;
+                height:            62px;
+                position:          absolute;
+                top:               0;
+                right:             -90px;
+                background-image:  url('../img/cart_checkout/stamp-arrow-left.png');
+                background-repeat: no-repeat;
+            }
+        }
+
+        @media (min-width: 771px) {
+            margin-top: -4.3rem;
+        }
+    }
+}
+
+h1.TitleHeading {
+    margin-top:  2rem;
+    font-family: StencilGothic !important;
+    font-size:   68px !important;
+    color:       #000000 !important;
+
+    @media (max-width: 551px) {
+        font-size: 30px;
+    }
+}
+
+.checkout-banner {
+    a {
+        font-family:     Futura-Bold !important;
+        font-size:       16px !important;
+        color:           #000000 !important;
+        letter-spacing:  1px !important;
+        line-height:     20px !important;
+        text-decoration: none !important;
+        text-transform:  uppercase !important;
+
+        &:hover {
+            color: #E9B3B3 !important;
+        }
+    }
+}
+
+img[src$="NodeJoin.gif"] { display: none }
+
+.icon-edit {
+    width:            3rem;
+    position:         relative;
+    display:          inline-block;
+    background-image: none;
+
+    &:hover {
+        background-image: none;
+
+        &::after {
+            color: #E9B3B3;
+        }
+    }
+
+    &::after {
+        content:         'EDIT';
+        display:         block;
+        height:          1.5rem;
+        width:           3rem;
+        top:             0;
+        left:            0;
+        font-family:     Futura-Bold;
+        font-weight:     normal;
+        font-size:       14px;
+        text-decoration: none;
+        cursor:          pointer;
+        color:           black;
+
+        &:hover {
+            color: #E9B3B3;
+        }
+    }
+}
+
+.icon-delete {
+    width:            6rem;
+    position:         relative;
+    display:          inline-block;
+    background-image: none;
+
+    &:hover {
+        background-image: none;
+
+        &::after {
+            color: #E9B3B3;
+        }
+    }
+
+    &::after {
+        content:         'DELETE';
+        display:         block;
+        height:          1.5rem;
+        width:           6rem;
+        top:             0;
+        left:            0;
+        font-family:     Futura-Bold;
+        font-weight:     normal;
+        font-size:       14px;
+        text-decoration: none;
+        cursor:          pointer;
+        color:           black;
+
+        &:hover {
+            color: #E9B3B3;
+        }
+    }
+}
+
+.icon-add {
+    background-image: url('../img/bon_builder/builder/ui-add-btn.svg');
+    background-color: transparent;
+    background-size: 100%;
+
+    &:hover {
+        background-image: url('../img/bon_builder/builder/ui-add-btn-hover.svg');
+    }
+}
+
+
+.multiStep li.ActivePage h4 {
+    border-bottom-color: #E35737;
+}
+
+.multiStep li a {
+    color: black;
+}
+
+.btn.alt {
+    border:           none;
+    color:            white;
+    background-color: #E35737;
+
+    &:hover {
+        border: none;
+        color: white;
+    }
+}
+
+.form li label {
+    width: 100%;
+}
