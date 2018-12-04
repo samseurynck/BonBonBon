@@ -1,1 +1,1335 @@
-webpackJsonp([1],{371:function(e,t,n){"use strict";var r=n(376),s=n.n(r),a=n(374);s.a.classes.errorClass="form-field--error",s.a.classes.successClass="form-field--success",s.a.classes.errorMessageClass="form-inlineMessage",s.a.checkFunctions["min-max"]=a.a,t.a=s.a},374:function(e,t,n){"use strict";function r(e,t){function n(n){var r=parseFloat(o()(e).val()),s=parseFloat(o()(t).val());return n(s>r||a()(s)||a()(r)?!0:!1)}return n}var s=n(375),a=n.n(s),i=n(1),o=n.n(i);t.a=r},375:function(e,t,n){function r(e){return s(e)&&e!=+e}var s=n(242);e.exports=r},376:function(e,t,n){(function(t){function n(e){function t(e){(Array.isArray(e)?e:[e]).forEach(function(e){var t,n;if(Array.isArray(e.validate)){if(!Array.isArray(e.errorMessage)){var s='If you pass in `validate:...` as an  array, then `errorMessage:...` also needs to be an  array. "'+e.validate+'", and "'+e.errorMessage+'"';throw Error(s)}t=e.validate,n=e.errorMessage,t.forEach(function(t,s){e.validate=t,e.errorMessage=n[s],r(e)})}else r(e)})}function r(e){function t(e,t){n.getElements(t).forEach(function(t){var n=b.findOrMake(t,x,null,p);e.subscribeTo(n.id)})}var r=[],s=n.getCheckFunction(e),a=n.getElements(e.selector),i=a.map(function(t){return{listener:b.findOrMake(t,x,e.triggerEvents,p),checker:C.findOrMake(t,x),checkHandler:E.findOrMake(t,x,p),domNode:y.findOrMake(t,x,p)}});s.validate="function"==typeof e.validate?e.validate.toString():e.validate,"one-of"!==e.validate&&"only-one-of"!==e.validate&&"some-radio"!==e.validate||r.push(e.selector),"string"==typeof e.validate&&e.validate.indexOf("same-as")>-1&&r.push(e.validate.split(":")[1]),i.forEach(function(a){a.checker.subscribeTo(a.listener.id),t(a.checker,e.triggeredBy),t(a.checker,r);var i=n.unique();a.checker.addCheck(s,i),a.checkHandler.subscribeTo(i,e.errorMessage,e.defaultStatus),p.noDom?g.subscribe(a.checkHandler.id):a.domNode.subscribeTo(a.checkHandler.id)}),c()}function s(e){n.getElement(e).addEventListener("submit",a,!1)}function a(e){if(p.preventSubmit&&!u(n.constants.VALID)){e.preventDefault(),C.forEach(function(t){t.performCheck({event:e})});for(var t=0,r=E.length;t<r;t++){var s=E[t];if(s.getStatus().status===n.constants.INVALID){s.element.focus();break}}}}function i(e){n.getElements(e).forEach(function(e){b.removeItem(e),C.removeItem(e),E.removeItem(e),y.removeItem(e)})}function o(e,t){var n={};arguments.length>1?n[e]=t:n=e;for(var r in n)p[r]=n[r];(n.submit||n.disableSubmit)&&c(),n.form&&s(n.form)}function c(){p.submit&&p.disableSubmit&&n.getElements(p.submit).forEach(function(e){e.disabled=!u(n.constants.VALID)})}function u(e){for(var t=0,n=E.length;t<n;t++)if(E[t].getStatus().status!==e)return!1;return!0}function l(e){e=Array.isArray(e)?e:[e],e.forEach(function(e){n.getElements(e.selector).forEach(function(t){y.findOrMake(t,x,p).setMessageOptions(e.parent,e.errorSpan)})})}function f(e,t){var r=n.getElement(e),s=E.findOrMake(r).getStatus();return t?s:s.status}function d(e){(e?n.getElements(e).map(C.findOrMake):C).forEach(function(e){e.performCheck()})}function m(e,t){var r=n.getElement(e);y.findOrMake(r).set({result:n.constants.INVALID,errorMessage:t||""})}function v(e){var t=n.getElement(e);y.findOrMake(t).set({result:n.constants.VALID,errorMessage:""})}function h(){for(var e=0,t=y.length;e<t;e++)v(y[e].element)}var p={},x=n.makeMediator(),g=n.makeEventEmitter(x),b=n.makeCollection(n.makeListener),C=n.makeCollection(n.makeChecker),E=n.makeCollection(n.makeCheckHandler),y=n.makeCollection(n.makeDomNode);x.subscribe("all",c),x.subscribe("all",function(e){"function"==typeof p.tap&&"check"===e.type&&p.tap(e)});var k={add:t,remove:i,areAll:u,getStatus:f,configure:o,setMessageOptions:l,performCheck:d,setInvalid:m,setValid:v,setAllNodeValid:h};return e&&k.configure(e),k}n.constants={VALID:"valid",INVALID:"invalid",UNCHECKED:"unchecked",DELAY:700},n.classes={successClass:"nod-success",successMessageClass:"nod-success-message",errorClass:"nod-error",errorMessageClass:"nod-error-message"},n.unique=function(){var e=0;return function(){return e++}}(),n.makeMediator=function(){var e=[],t=[];return{subscribe:function(n,r){"all"===n?t.push(r):(e[n]||(e[n]=[]),-1===e[n].indexOf(r)&&e[n].push(r))},fire:function(n){e[n.id].concat(t).forEach(function(e){e(n)})}}},n.findCollectionIndex=function(e,t){for(var n in e)if(e[n].element===t)return n;return-1},n.makeCollection=function(e){var t=[];return t.findOrMake=function(r){var s=n.findCollectionIndex(t,r);if(-1!==s)return t[s];var a=e.apply(null,arguments);return t.push(a),a},t.removeItem=function(e){var r=n.findCollectionIndex(t,e),s=t[r];s&&("function"==typeof s.dispose&&s.dispose(),t.splice(r,1))},t},n.makeListener=function(e,t,r,s){function a(e){t.fire({id:c,event:e,type:"change"})}function i(){e.removeEventListener("input",a,!1),e.removeEventListener("change",a,!1),e.removeEventListener("blur",a,!1),o&&o.off(),r&&r.forEach(function(t){e.removeEventListener(t,a,!1)})}var o,c=n.unique();return e.addEventListener("input",a,!1),e.addEventListener("change",a,!1),e.addEventListener("blur",a,!1),s.jQuery&&(o=s.jQuery(e),o.on("propertychange change click keyup input paste",a)),r&&(r=Array.isArray(r)?r:[r],r.forEach(function(t){e.addEventListener(t,a,!1)})),{element:e,dispose:i,id:c}},n.makeChecker=function(e,t){function n(e){t.subscribe(e,r)}function r(e){a.forEach(function(t){t(e||{})})}function s(n,r){function s(s){t.fire({id:r,type:"check",result:s,element:e,validate:n.validate})}a.push(function(t){var r=void 0===e.value?e.innerHTML:e.value;t.element=e,n(s,r,t)})}var a=[];return{subscribeTo:n,addCheck:s,performCheck:r,element:e}},n.makeCheckHandler=function(e,t,r){function s(e,r,s){c[e]||(c[e]={status:s||n.constants.UNCHECKED,errorMessage:r}),t.subscribe(e,a)}function a(e){c[e.id].status=e.result?n.constants.VALID:n.constants.INVALID,i()}function i(){var n=o();t.fire({id:u,type:"result",result:n.status,element:e,errorMessage:n.errorMessage})}function o(){var e,t;for(var r in c)if(e=c[r].status,c[r].status===n.constants.INVALID){t=c[r].errorMessage;break}return{status:e,errorMessage:t}}var c={},u=n.unique();return{id:u,subscribeTo:s,checkHandler:a,getStatus:o,element:e}},n.hasClass=function(e,t){if(t.classList)return t.classList.contains(e);var n=new RegExp("(\\s|^)"+e+"(\\s|$)");return!!t.className.match(n)},n.removeClass=function(e,t){if(t.classList)t.classList.remove(e);else if(n.hasClass(e,t)){var r=new RegExp("(?:^|\\s)"+e+"(?!\\S)");t.className=t.className.replace(r,"")}},n.addClass=function(e,t){t.classList?t.classList.add(e):n.hasClass(e,t)||(t.className+=" "+e)},n.getParent=function(e,t){var r=t.parentClass;return r?(r="."===r.charAt(0)?r.slice(1):r,n.findParentWithClass(e.parentNode,r)):e.parentNode},n.findParentWithClass=function(e,t){return e.parentNode?n.hasClass(t,e)?e:n.findParentWithClass(e.parentNode,t):e},n.makeDomNode=function(e,t,r){function s(e){var t=r.successClass||n.classes.successClass,s=r.errorClass||n.classes.errorClass;switch(e){case n.constants.VALID:n.removeClass(s,l),n.addClass(t,l);break;case n.constants.INVALID:n.removeClass(t,l),n.addClass(s,l)}}function a(e,t){var s=r.successMessageClass||n.classes.successMessageClass,a=r.errorMessageClass||n.classes.errorMessageClass;switch(m.style.display="none",e){case n.constants.VALID:n.removeClass(a,m),n.addClass(s,m),r.successMessage&&(m.textContent=r.successMessage,m.style.display="");break;case n.constants.INVALID:n.removeClass(s,m),n.addClass(a,m),m.textContent=t,m.style.display=""}}function i(e){var t=e.result,i=e.errorMessage;f===n.constants.INVALID||0===r.delay?(f=t,s(t),a(t,i)):(clearTimeout(d),d=setTimeout(function(){f=t,s(t),a(t,i),d=null},r.delay||n.constants.DELAY))}function o(e){t.subscribe(e,i)}function c(e,t){e&&(l=n.getElement(e)),t&&(m.parentNode.removeChild(m),m=n.getElement(t),v=!0)}function u(){n.removeClass(r.errorClass||n.classes.errorClass,l),n.removeClass(r.successClass||n.classes.successClass,l),m.parentNode&&!v&&m.parentNode.removeChild(m)}var l=n.getParent(e,r),f=n.constants.UNCHECKED,d=null,m=document.createElement("span"),v=!1;return m.style.display="none",r.noDom||l.appendChild(m),{subscribeTo:o,element:e,setMessageOptions:c,dispose:u,set:i}},n.makeEventEmitter=function(e){function t(e){if(!r){throw Error("nod.validate tried to fire a custom event, but the browser does not support CustomEvent's")}s=new r("nod.validation",{detail:e}),e.element.dispatchEvent(s)}function n(n){e.subscribe(n,t)}var s;return{subscribe:n}},n.getElement=function(e){return n.getElements(e)[0]},n.getElements=function(e){if(!e)return[];if("string"==typeof e){if(t)return t(e).get();var r=document.querySelectorAll(e);return[].map.call(r,function(e){return e})}if(e.jquery)return e.get();if(1===e.nodeType)return[e];if(Array.isArray(e)){var s=[];return e.forEach(function(e){var t=n.getElements(e);s=s.concat(t)}),s}throw Error("Unknown type of elements in your `selector`: "+e)},n.getCheckFunction=function(e){if("function"==typeof e.validate)return e.validate;if(e.validate instanceof RegExp)return n.checkFunctions.regexp(e.validate);var t=e.validate.split(":"),r=t.shift();if("one-of"!==r&&"only-one-of"!==r&&"same-as"!==r&&"some-radio"!==r||t.push(e.selector),"function"==typeof n.checkFunctions[r])return n.checkFunctions[r].apply(null,t);var s="Couldn't find your validator function \""+r+'" for "'+e.selector+'"';throw Error(s)},n.checkFunctions={presence:function(){return function(e,t){e(t.length>0)}},exact:function(e){return function(t,n){t(n===e)}},contains:function(e){return function(t,n){t(n.indexOf(e)>-1)}},not:function(e){return function(t,n){t(n!==e)}},"min-length":function(e){return function(t,n){t(n.length>=e)}},"max-length":function(e){return function(t,n){t(n.length<=e)}},"exact-length":function(e){return function(t,n){t(n.length===+e)}},"between-length":function(e,t){return function(n,r){var s=r.length>=e,a=r.length<=t;n(s&&a)}},"max-number":function(e){return function(t,n){t(+n<=e)}},"min-number":function(e){return function(t,n){t(+n>=e)}},"between-number":function(e,t){return function(n,r){n(+r>=e&&+r<=t)}},integer:function(){return function(e,t){e(/^\s*\d+\s*$/.test(t))}},float:function(){return function(e,t){e(/^[-+]?[0-9]+(\.[0-9]+)?$/.test(t))}},"same-as":function(e){var t=n.getElement(e);return function(e,n,r){r&&r.event&&r.event.target&&r.event.target!==r.element&&0===n.length||e(n===t.value)}},"one-of":function(e){function t(){return r.reduce(function(e,t){return e+""+(t.value||"")},"")}var r=n.getElements(e);return function(e){e(t().trim().length>0)}},"only-one-of":function(e){var t=n.getElements(e);return function(e,n){var r=0;t.forEach(function(e){e.value&&r++}),e(1===r)}},checked:function(){return function(e,t,n){e(n.element.checked)}},"some-radio":function(e){var t=n.getElements(e);return function(e,n,r){e(t.reduce(function(e,t){return e||t.checked},!1))}},regexp:function(e){return function(t,n){t(e.test(n))}},email:function(){var e=/^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;return function(t,n){t(e.test(n))}}};try{new r("test")}catch(e){var r=function(e,t){var n;return t=t||{bubbles:!1,cancelable:!1,detail:void 0},n=document.createEvent("CustomEvent"),n.initCustomEvent(e,t.bubbles,t.cancelable,t.detail),n};r.prototype=window.Event.prototype,window.CustomEvent=r}void 0!==e&&e.exports&&(e.exports=n)}).call(t,n(1))},47:function(e,t,n){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function s(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function a(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}Object.defineProperty(t,"__esModule",{value:!0});var i=n(1),o=n.n(i),c=n(57),u=(n.n(c),n(101)),l=(n.n(u),n(371)),f=n(240),d=n(45),m=n(96),v=function(e){function t(){r(this,t);var n=s(this,e.call(this));return n.options={template:"account/add-wishlist"},n}return a(t,e),t.prototype.wishlistDeleteConfirm=function(){var e=this;o()("body").on("click","[data-wishlist-delete]",function(t){if(confirm(e.context.wishlistDelete))return!0;t.preventDefault()})},t.prototype.registerAddWishListValidation=function(e){var t=this;this.addWishlistValidator=n.i(l.a)({submit:'.wishlist-form input[type="submit"]'}),this.addWishlistValidator.add([{selector:'.wishlist-form input[name="wishlistname"]',validate:function(e,t){e(t.length>0)},errorMessage:"You must enter a wishlist name."}]),e.submit(function(e){t.addWishlistValidator.performCheck(),t.addWishlistValidator.areAll("valid")||e.preventDefault()})},t.prototype.wishListHandler=function(){var e=this;o()("body").on("click","[data-wishlist]",function(t){var r=t.currentTarget.href,s=n.i(m.a)();t.preventDefault(),s.open(),d.a.getPage(r,e.options,function(t,n){if(t)return s.updateContent(t);s.updateContent(n,{wrap:!0});var r=o()(".wishlist-form",s.$content);e.registerAddWishListValidation(r)})})},t.prototype.loaded=function(e){var t=o()(".wishlist-form");t.length&&this.registerAddWishListValidation(t),this.wishlistDeleteConfirm(),this.wishListHandler(),e()},t}(f.a);t.default=v}});
+webpackJsonp([1],{
+
+/***/ 371:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nod_validate__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_nod_validate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_nod_validate__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nod_functions_min_max_validate__ = __webpack_require__(374);
+// Hook our SCSS framework form field status classes into the nod validation system before use
+__WEBPACK_IMPORTED_MODULE_0_nod_validate___default.a.classes.errorClass='form-field--error';__WEBPACK_IMPORTED_MODULE_0_nod_validate___default.a.classes.successClass='form-field--success';__WEBPACK_IMPORTED_MODULE_0_nod_validate___default.a.classes.errorMessageClass='form-inlineMessage';// Register validate functions
+__WEBPACK_IMPORTED_MODULE_0_nod_validate___default.a.checkFunctions['min-max']=__WEBPACK_IMPORTED_MODULE_1__nod_functions_min_max_validate__["a" /* default */];/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_nod_validate___default.a);
+
+/***/ }),
+
+/***/ 374:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_lang_isNaN__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_lang_isNaN___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_lang_isNaN__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_jquery__);
+function minMaxValidate(minInputSelector,maxInputSelector){function validate(cb){var minValue=parseFloat(__WEBPACK_IMPORTED_MODULE_1_jquery___default()(minInputSelector).val());var maxValue=parseFloat(__WEBPACK_IMPORTED_MODULE_1_jquery___default()(maxInputSelector).val());if(maxValue>minValue||__WEBPACK_IMPORTED_MODULE_0_lodash_lang_isNaN___default()(maxValue)||__WEBPACK_IMPORTED_MODULE_0_lodash_lang_isNaN___default()(minValue)){return cb(true)}return cb(false)}return validate}/* harmony default export */ __webpack_exports__["a"] = (minMaxValidate);
+
+/***/ }),
+
+/***/ 375:
+/***/ (function(module, exports, __webpack_require__) {
+
+var isNumber = __webpack_require__(242);
+
+/**
+ * Checks if `value` is `NaN`.
+ *
+ * **Note:** This method is not the same as [`isNaN`](https://es5.github.io/#x15.1.2.4)
+ * which returns `true` for `undefined` and other non-numeric values.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is `NaN`, else `false`.
+ * @example
+ *
+ * _.isNaN(NaN);
+ * // => true
+ *
+ * _.isNaN(new Number(NaN));
+ * // => true
+ *
+ * isNaN(undefined);
+ * // => true
+ *
+ * _.isNaN(undefined);
+ * // => false
+ */
+function isNaN(value) {
+  // An `NaN` primitive is the only value that is not equal to itself.
+  // Perform the `toStringTag` check first to avoid errors with some host objects in IE.
+  return isNumber(value) && value != +value;
+}
+
+module.exports = isNaN;
+
+
+/***/ }),
+
+/***/ 376:
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(__webpack_provided_window_dot_jQuery) {
+/**
+ *
+ *
+ * nod v.2.0.12
+ * Gorm Casper
+ *
+ *
+ *
+ * This is a short breakdown of the code to help you find your way around.
+ *
+ *
+ * An `element` always refer to some input element defined by the user via the
+ * `selector` key.
+ *
+ * A `metric` is the user created objects that is used to add checks to
+ * nod.
+ *
+ * Each `element` will have at most one of a `listener`, a `checker`, a
+ * `checkHandler`, and a `domNode` "attached" to it. The `listener` listens
+ * for inputs or changes to the `element` and passes the new value on to to the
+ * `checker` which performs its checks and passes the the results on to the
+ * `checkHandler` which calculates the new state of the `element` which it
+ * passes on to the `domNode` which will update the dom.
+ *
+ * The four main parts, the listener, the checker, the checkHandler, and the
+ * domNode all communicate through the `mediator` by firing events identified
+ * by a unique id. They do not know of each other's existance, and so no
+ * communication flows directly between them.
+ *
+ * All listeners, checkers, handlers, and domNodes are grouped together in
+ * `collections`, which are basically a glorified array that makes it easy
+ * not to get duplicate items for each element (for instance two listeners
+ * listening to the same element).
+ *
+ * The communication flow looks like this:
+ * listener -> checker -> checkHandler -> domNode
+ *
+ * Between each part, you have the mediator.
+ *
+ *
+ * `Metrics` are added by the user, which sets up the system above. Notice
+ * that a metric can target multiple elements at once, and that there can
+ * be overlaps. One metric definitely does not equal one element or one
+ * check.
+ *
+ */
+
+function nod (config) {
+    var form,
+        configuration   = {},
+        mediator        = nod.makeMediator(),
+        eventEmitter    = nod.makeEventEmitter(mediator),
+
+        // Creating (empty) collections
+        listeners       = nod.makeCollection(nod.makeListener),
+        checkers        = nod.makeCollection(nod.makeChecker),
+        checkHandlers   = nod.makeCollection(nod.makeCheckHandler),
+        domNodes        = nod.makeCollection(nod.makeDomNode);
+
+    /**
+     * Entry point for the user. The user passes in an array of metrics (an
+     * object containing a selector, a validate string/function, etc.) and it
+     * gets processed from here.
+     *
+     * This function, is mostly about cleaning up what the user passed us.
+     */
+    function addMetrics (metrics) {
+        // Make sure we are dealing with an array of metrics.
+        var arrayMetrics = Array.isArray(metrics) ? metrics : [metrics];
+
+        arrayMetrics.forEach(function (metric) {
+            var validateArray, errorMessageArray,
+                notArray = !Array.isArray(metric.validate);
+
+            // If the 'validate' is not an array, then we're good to go.
+            if (notArray) {
+                addMetric(metric);
+
+            // If it is an array (e.g., validate: ['email', 'max-length:10']),
+            // then we need to split them up into multiple metrics, and add
+            // them individually.
+            } else {
+                if (!Array.isArray(metric.errorMessage)) {
+                    var errorMsg = 'If you pass in `validate:...` as an ' +
+                        ' array, then `errorMessage:...` also needs to be an ' +
+                        ' array. "' + metric.validate + '", and "' +
+                        metric.errorMessage + '"';
+
+                    throw Error(errorMsg);
+                }
+
+                // We store each as arrays, and then run through them,
+                // overwriting each of the keys accordingly.
+                validateArray     = metric.validate;
+                errorMessageArray = metric.errorMessage;
+
+                validateArray.forEach(function (validate, i) {
+                    // Overwrite the array with the individual 'validate' and
+                    // 'errorMessage'.
+                    metric.validate     = validate;
+                    metric.errorMessage = errorMessageArray[i];
+
+                    addMetric(metric);
+                });
+            }
+        });
+    }
+
+    function addMetric (metric) {
+        var specialTriggers = [],
+
+            // The function that will check the value of the element.
+            checkFunction = nod.getCheckFunction(metric),
+
+            // A list of elements that this metric will target.
+            elements = nod.getElements(metric.selector),
+
+            // A "set" here, refers to an obj with one listener, one checker,
+            // and one checkHandler. Only every one for each element in the
+            // dom.
+            metricSets = elements.map(function (element) {
+                return {
+                    listener:       listeners.findOrMake(element,
+                                                         mediator,
+                                                         metric.triggerEvents,
+                                                         configuration),
+                    checker:        checkers.findOrMake(element, mediator),
+                    checkHandler:   checkHandlers.findOrMake(element,
+                                                             mediator,
+                                                             configuration),
+                    domNode:        domNodes.findOrMake(element,
+                                                        mediator,
+                                                        configuration)
+                };
+            });
+
+        // Saved for later reference in case the user has a `tap` function
+        // defined.
+        checkFunction.validate = (typeof metric.validate === 'function')
+            ? metric.validate.toString()
+            : metric.validate;
+
+        // Special cases. These `validates` affect each other, and their state
+        // needs to update each time either of the elements' values change.
+        if (metric.validate === 'one-of'
+            || metric.validate === 'only-one-of'
+            || metric.validate === 'some-radio') {
+            specialTriggers.push(metric.selector);
+        }
+
+        if (typeof metric.validate === 'string'
+            && metric.validate.indexOf('same-as') > -1) {
+            specialTriggers.push(metric.validate.split(':')[1]);
+        }
+
+        // Helper function, used in the loop below.
+        function subscribeToTriggers (checker, selector) {
+            var triggerElements = nod.getElements(selector);
+
+            triggerElements.forEach(function (element) {
+                var listener = listeners.findOrMake(element,
+                                                    mediator,
+                                                    null,
+                                                    configuration);
+
+                checker.subscribeTo(listener.id);
+            });
+        }
+
+        // Here we set up the "connections" between each of our main parts.
+        // They communicate only through the mediator.
+        metricSets.forEach(function (metricSet) {
+            // :: Listener -> Checker
+
+            // We want our checker to listen to the listener. A listener has an
+            // id, which it uses when it fires events to the mediator (which
+            // was set up when the listener was created).
+            metricSet.checker.subscribeTo(metricSet.listener.id);
+
+            // If the user set a `triggeredBy`, the checker need to listen to
+            // changes on this element as well.
+            // Same goes for special triggers that we set.
+            subscribeToTriggers(metricSet.checker, metric.triggeredBy);
+            subscribeToTriggers(metricSet.checker, specialTriggers);
+
+            // :: Checker -> checkHandler
+
+            var checkId = nod.unique();
+
+            // We add the check function as one to be checked when the user
+            // inputs something. (There might be more than this one).
+            metricSet.checker.addCheck(checkFunction, checkId);
+
+            // We want the check handler to listen for results from the checker
+            metricSet.checkHandler.subscribeTo(checkId,
+                                               metric.errorMessage,
+                                               metric.defaultStatus);
+
+            if (configuration.noDom) {
+                eventEmitter.subscribe(metricSet.checkHandler.id);
+            } else {
+                // :: checkHandler -> domNode
+
+                // The checkHandler has its own id (and only ever needs one), so
+                // we just ask the domNode to listen for that.
+                metricSet.domNode.subscribeTo(metricSet.checkHandler.id);
+            }
+        });
+
+        // After all is done, we may have to enable/disable a submit button.
+        toggleSubmit();
+    }
+
+    /**
+     * If a form is added, we listen for submits, and if the has also set
+     * `preventSubmit` in the configuration, then we stop the commit from
+     * happening unless all the elements are valid.
+     */
+    function addForm (selector) {
+        var form = nod.getElement(selector);
+
+        form.addEventListener('submit', possiblePreventSubmit, false);
+    }
+
+    // Prevent function, used above
+    function possiblePreventSubmit (event) {
+        if (configuration.preventSubmit && !areAll(nod.constants.VALID)) {
+            event.preventDefault();
+
+            // Show errors to the user
+            checkers.forEach(function (checker) {
+                checker.performCheck({
+                    event: event
+                });
+            });
+
+            // Focus on the first invalid element
+            for (var i = 0, len = checkHandlers.length; i < len; i++) {
+                var checkHandler = checkHandlers[i];
+
+                if (checkHandler.getStatus().status === nod.constants.INVALID) {
+                    checkHandler.element.focus();
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Removes elements completely.
+     */
+    function removeElement (selector) {
+        var elements = nod.getElements(selector);
+
+        elements.forEach(function (element) {
+            listeners.removeItem(element);
+            checkers.removeItem(element);
+            checkHandlers.removeItem(element);
+            domNodes.removeItem(element);
+        });
+    }
+
+    /**
+     * configure
+     *
+     * Changes the configuration object used throughout the code for classes,
+     * delays, messages, etc.
+     *
+     * It can either be called with a key/value pair (two arguments), or with
+     * an object with key/value pairs.
+     */
+    function configure (key, value) {
+        var attributes = {};
+
+        if (arguments.length > 1) {
+            attributes[key] = value;
+        } else {
+            attributes = key;
+        }
+
+        for (var k in attributes) {
+            configuration[k] = attributes[k];
+        }
+
+        if (attributes.submit || attributes.disableSubmit) {
+            toggleSubmit();
+        }
+
+        if (attributes.form) {
+            addForm(attributes.form);
+        }
+    }
+
+    /**
+     * toggleSubmit
+     *
+     * Toggles the submit button (enabled if every element is valid, otherwise
+     * disabled).
+     */
+    function toggleSubmit () {
+        if (configuration.submit && configuration.disableSubmit) {
+            nod.getElements(configuration.submit).forEach(function (submitBtn) {
+                submitBtn.disabled = !areAll(nod.constants.VALID);
+            });
+        }
+    }
+
+    /**
+     * Listen to all checks, and if the user has set in the configuration to
+     * enable/disabled the submit button, we do that.
+     */
+    mediator.subscribe('all', toggleSubmit);
+
+    function areAll (status) {
+        for (var i = 0, len = checkHandlers.length; i < len; i++) {
+            if (checkHandlers[i].getStatus().status !== status) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function setMessageOptions (options) {
+        options = Array.isArray(options) ? options : [options];
+
+        options.forEach(function (option) {
+            var elements = nod.getElements(option.selector);
+
+            elements.forEach(function (element) {
+                var domNode = domNodes.findOrMake(element,
+                                                  mediator,
+                                                  configuration);
+
+                domNode.setMessageOptions(option.parent, option.errorSpan);
+            });
+        });
+    }
+
+    /**
+     * Listen to all checks and allow the user to listen in, if he set a `tap`
+     * function in the configuration.
+     */
+    mediator.subscribe('all', function (options) {
+        if (typeof configuration.tap === 'function'
+            && options.type === 'check') {
+            configuration.tap(options);
+        }
+    });
+
+    function getStatus (selector, showErrorMessage) {
+        var element = nod.getElement(selector),
+            status  = checkHandlers.findOrMake(element).getStatus();
+
+        return showErrorMessage ? status : status.status;
+    }
+
+    function performCheck (selector) {
+        var cs = selector
+            ? nod.getElements(selector).map(checkers.findOrMake)
+            : checkers;
+
+        cs.forEach(function (checker) {
+            checker.performCheck();
+        });
+    }
+
+    function setInvalid (selector, errorMessage) {
+        var element = nod.getElement(selector),
+            domNode  = domNodes.findOrMake(element);
+
+        domNode.set({
+            result: nod.constants.INVALID,
+            errorMessage: errorMessage || ''
+        });
+    }
+
+    function setValid (selector) {
+        var element = nod.getElement(selector),
+            domNode  = domNodes.findOrMake(element);
+
+        domNode.set({
+            result: nod.constants.VALID,
+            errorMessage: ''
+        });
+    }
+
+    function setAllNodeValid () {
+        for (var i = 0, len = domNodes.length; i < len; i++) {
+            setValid(domNodes[i].element);
+        }
+    }
+
+    /**
+     * Internal functions that are exposed to the public.
+     */
+    var nodInstace = {
+        add:                    addMetrics,
+        remove:                 removeElement,
+        areAll:                 areAll,
+        getStatus:              getStatus,
+        configure:              configure,
+        setMessageOptions:      setMessageOptions,
+        performCheck:           performCheck,
+        setInvalid:             setInvalid,
+        setValid:               setValid,
+        setAllNodeValid:        setAllNodeValid
+    };
+
+    if (config) {
+        nodInstace.configure(config);
+    }
+
+    return nodInstace;
+}
+
+nod.constants = {
+    VALID:          'valid',
+    INVALID:        'invalid',
+    UNCHECKED:      'unchecked',
+
+    DELAY:          700
+};
+
+nod.classes = {
+    successClass:         'nod-success',
+    successMessageClass:  'nod-success-message',
+    errorClass:           'nod-error',
+    errorMessageClass:    'nod-error-message'
+};
+
+// Helper function to create unique id's
+nod.unique = (function () {
+    var uniqueCounter = 0;
+
+    return function () {
+        return uniqueCounter++;
+    };
+})();
+
+/** makeMediator
+ *
+ * Minimal implementation of a mediator pattern, used for communication between
+ * checkers and checkHandlers (checkers fires events which handlers can
+ * subscribe to). Unique ID's are used to tell events apart.
+ *
+ * Subscribing to 'all' will give you all results from all checks.
+ */
+nod.makeMediator = function () {
+    var subscribers = [],
+        all = [];
+
+    return {
+        subscribe: function subscribe (id, fn) {
+            if (id === 'all') {
+                all.push(fn);
+            } else {
+                if (!subscribers[id]) {
+                    subscribers[id] = [];
+                }
+
+                if (subscribers[id].indexOf(fn) === -1) {
+                    subscribers[id].push(fn);
+                }
+            }
+        },
+
+        fire: function fire (options) {
+            var subscribedFunctions = subscribers[options.id].concat(all);
+
+            subscribedFunctions.forEach(function (subscribedFunction) {
+                subscribedFunction(options);
+            });
+        }
+    };
+};
+
+nod.findCollectionIndex = function (collection, element) {
+    for (var i in collection) {
+        if (collection[i].element === element) {
+            return i;
+        }
+    }
+
+    return -1;
+};
+
+/**
+ * makeCollection
+ *
+ * A minimal implementation of a "collection", inspired by collections from
+ * BackboneJS. Used by listeners, checkers, and checkHandlers.
+ */
+nod.makeCollection = function (maker) {
+    var collection = [];
+
+    collection.findOrMake = function (element) {
+        var index = nod.findCollectionIndex(collection, element);
+
+        // Found
+        if (index !== -1) {
+            return collection[index];
+        }
+
+        // None found, let's make one then.
+        var item = maker.apply(null, arguments);
+
+        collection.push(item);
+
+        return item;
+    };
+
+    collection.removeItem = function (element) {
+        var index = nod.findCollectionIndex(collection, element),
+            item = collection[index];
+
+        if (!item) {
+            return;
+        }
+
+        // Call .dispose() if it exists
+        if (typeof item.dispose === 'function') {
+            item.dispose();
+        }
+
+        // Remove item
+        collection.splice(index, 1);
+    };
+
+    return collection;
+};
+
+/**
+ * makeListener
+ *
+ * Takes care of listening to changes to its element and fire them off as
+ * events on the mediator for checkers to listen to.
+ */
+nod.makeListener = function (element, mediator, triggerEvents, configuration) {
+    var id = nod.unique(),
+        $element;
+
+    function changed (event) {
+        mediator.fire({
+            id:     id,
+            event:  event,
+            type:   'change'
+        });
+    }
+
+    element.addEventListener('input', changed, false);
+    element.addEventListener('change', changed, false);
+    element.addEventListener('blur', changed, false);
+
+    if (configuration.jQuery) {
+        $element = configuration.jQuery(element);
+
+        $element.on('propertychange change click keyup input paste', changed);
+    }
+
+    if (triggerEvents) {
+        triggerEvents = Array.isArray(triggerEvents)
+            ? triggerEvents
+            : [triggerEvents];
+
+        triggerEvents.forEach(function (eventName) {
+            element.addEventListener(eventName, changed, false);
+        });
+    }
+
+    function dispose () {
+        element.removeEventListener('input', changed, false);
+        element.removeEventListener('change', changed, false);
+        element.removeEventListener('blur', changed, false);
+
+        if ($element) {
+            $element.off();
+        }
+
+        if (triggerEvents) {
+            triggerEvents.forEach(function (eventName) {
+                element.removeEventListener(eventName, changed, false);
+            });
+        }
+    }
+
+    return {
+        element:    element,
+        dispose:    dispose,
+        id:         id
+    };
+};
+
+/**
+ * makeChecker
+ *
+ * An "checker" communicates primarily with the mediator. It listens for input
+ * changes (coming from listeners), performs its checks and fires off results
+ * back to the mediator for checkHandlers to handle.
+ *
+ * The checker has a 1 to 1 relationship with an element, an listeners, and an
+ * checkHandler; although they may communicate with other "sets" of listeners,
+ * checkers and handlers.
+ *
+ * Checks are added, from the outside, and consists of a checkFunction (see
+ * nod.checkFunctions) and a unique id.
+ */
+nod.makeChecker = function (element, mediator) {
+    var checks = [];
+
+    function subscribeTo (id) {
+        mediator.subscribe(id, performCheck);
+    }
+
+    // Run every check function against the value of the element.
+    function performCheck (options) {
+        checks.forEach(function (check) {
+            check(options || {});
+        });
+    }
+
+    // Add a check function to the element. The result will be handed off to the
+    // mediator (for checkHandlers to evaluate).
+    function addCheck (checkFunction, id) {
+        function callback (result) {
+            mediator.fire({
+                id: id,
+                type: 'check',
+                result: result,
+                element: element,
+                validate: checkFunction.validate
+            });
+        }
+
+        checks.push(function (options) {
+            // If element.value is undefined, then we might be dealing with
+            // another type of element; like <div contenteditable='true'>
+            var value = element.value === undefined
+                ? element.innerHTML
+                : element.value;
+
+            options.element = element;
+
+            checkFunction(callback, value, options);
+        });
+    }
+
+    return {
+        subscribeTo:    subscribeTo,
+        addCheck:       addCheck,
+        performCheck:   performCheck,
+        element:        element
+    };
+};
+
+/**
+ * makeCheckHandler
+ *
+ * Handles checks coming in from the mediator and takes care of calculating the
+ * state and error messages.
+ *
+ * The checkHandlers lives in one to one with the element parsed in, and listens
+ * for (usually) multiple error checks.
+ */
+nod.makeCheckHandler = function (element, mediator, configuration) {
+    var results     = {},
+        id          = nod.unique();
+
+    function subscribeTo (id, errorMessage, defaultStatus) {
+        // Create a representation of the type of error in the results object.
+        if (!results[id]) {
+            results[id] = {
+                status: defaultStatus || nod.constants.UNCHECKED,
+                errorMessage: errorMessage
+            };
+        }
+
+        // Subscribe to error id.
+        mediator.subscribe(id, checkHandler);
+    }
+
+    function checkHandler (result) {
+        results[result.id].status = result.result
+            ? nod.constants.VALID
+            : nod.constants.INVALID;
+
+        notifyMediator();
+    }
+
+    // Runs through all results to see what kind of feedback to show the user.
+    function notifyMediator () {
+        var status = getStatus();
+
+        // Event if might be valid we pass along an undefined errorMessage.
+        mediator.fire({
+            id:             id,
+            type:           'result',
+            result:         status.status,
+            element:        element,
+            errorMessage:   status.errorMessage
+        });
+    }
+
+    function getStatus () {
+        var status, errorMessage;
+
+        for (var id in results) {
+            status = results[id].status;
+
+            if (results[id].status === nod.constants.INVALID) {
+                errorMessage = results[id].errorMessage;
+                break;
+            }
+        }
+
+        return {
+            status:        status,
+            errorMessage:  errorMessage
+        };
+    }
+
+    return {
+        id:             id,
+        subscribeTo:    subscribeTo,
+        checkHandler:   checkHandler,
+        getStatus:      getStatus,
+        element:        element
+    };
+};
+
+// Helper functions for `makeDomNode`.
+nod.hasClass = function (className, el) {
+    if (el.classList) {
+        return el.classList.contains(className);
+    } else {
+        var regex = new RegExp('(\\s|^)' + className + '(\\s|$)');
+        return !!el.className.match(regex);
+    }
+};
+
+nod.removeClass = function (className, el) {
+    if (el.classList) {
+        el.classList.remove(className);
+    } else if (nod.hasClass(className, el)) {
+        var regex = new RegExp('(?:^|\\s)' + className + '(?!\\S)');
+        el.className = el.className.replace(regex, '');
+    }
+};
+
+nod.addClass = function (className, el) {
+    if (el.classList) {
+        el.classList.add(className);
+    } else if (!nod.hasClass(className, el)) {
+        el.className += ' ' + className;
+    }
+};
+
+nod.getParent = function (element, configuration) {
+    var klass = configuration.parentClass;
+
+    if (klass) {
+        klass = klass.charAt(0) === '.' ? klass.slice(1) : klass;
+        return nod.findParentWithClass(element.parentNode, klass);
+    } else {
+        return element.parentNode;
+    }
+};
+
+nod.findParentWithClass = function (parent, klass) {
+    // Guard (only the `window` does not have a parent).
+    if (!parent.parentNode) {
+        return parent;
+    }
+
+    // Found it
+    if (nod.hasClass(klass, parent)) {
+        return parent;
+    }
+
+    // Try next parent (recursion)
+    return nod.findParentWithClass(parent.parentNode, klass);
+};
+
+/**
+ * makeDomNode
+ *
+ * This creates the error/success message behind the input element, as well as
+ * takes care of updating classes and taking care of its own state.
+ *
+ * The dom node is owned by checkHandler, and has a one to one relationship with
+ * both the checkHandler and the input element being checked.
+ *
+ */
+nod.makeDomNode = function (element, mediator, configuration) {
+    // A 'domNode' consists of two elements: a 'parent', and a 'span'. The
+    // parent is given as a paremeter, while the span is created and added as a
+    // child to the parent.
+    var parent              = nod.getParent(element, configuration),
+        _status             = nod.constants.UNCHECKED,
+        pendingUpdate       = null,
+        span                = document.createElement('span'),
+        customSpan          = false;
+
+    span.style.display = 'none';
+
+    if (!configuration.noDom) {
+        parent.appendChild(span);
+    }
+
+    // Updates the class of the parent to match the status of the element.
+    function updateParent (status) {
+        var successClass = configuration.successClass
+                           || nod.classes.successClass,
+            errorClass = configuration.errorClass
+                         || nod.classes.errorClass;
+
+        switch (status) {
+        case nod.constants.VALID:
+            nod.removeClass(errorClass, parent);
+            nod.addClass(successClass, parent);
+            break;
+
+        case nod.constants.INVALID:
+            nod.removeClass(successClass, parent);
+            nod.addClass(errorClass, parent);
+            break;
+        }
+    }
+
+    // Updates the text and class according to the status.
+    function updateSpan (status, errorMessage) {
+        var successMessageClass = configuration.successMessageClass
+                                  || nod.classes.successMessageClass,
+          errorMessageClass   = configuration.errorMessageClass
+                                || nod.classes.errorMessageClass;
+
+        span.style.display = 'none';
+
+        switch (status) {
+        case nod.constants.VALID:
+            nod.removeClass(errorMessageClass, span);
+            nod.addClass(successMessageClass, span);
+
+            if (configuration.successMessage) {
+                span.textContent = configuration.successMessage;
+                span.style.display = '';
+            }
+
+            break;
+
+        case nod.constants.INVALID:
+            nod.removeClass(successMessageClass, span);
+            nod.addClass(errorMessageClass, span);
+            span.textContent = errorMessage;
+            span.style.display = '';
+            break;
+        }
+    }
+
+    function set (options) {
+        var status              = options.result,
+            errorMessage        = options.errorMessage;
+
+        // If the dom is showing an invalid message, we want to update the dom
+        // right away.
+        if (_status === nod.constants.INVALID || configuration.delay === 0) {
+            _status = status;
+            updateParent(status);
+            updateSpan(status, errorMessage);
+        } else {
+            // If the dom shows either an unchecked or a valid state we won't
+            // rush to tell them they are wrong. Instead we use a method similar
+            // to "debouncing" the update
+            clearTimeout(pendingUpdate);
+
+            pendingUpdate = setTimeout(function () {
+                _status = status;
+                updateParent(status);
+                updateSpan(status, errorMessage);
+                pendingUpdate = null;
+            }, configuration.delay || nod.constants.DELAY);
+        }
+    }
+
+    function subscribeTo (id) {
+        mediator.subscribe(id, set);
+    }
+
+    function setMessageOptions (parentContainer, message) {
+        if (parentContainer) {
+            parent = nod.getElement(parentContainer);
+        }
+
+        if (message) {
+            span.parentNode.removeChild(span);      // Remove old span.
+            span = nod.getElement(message);         // Set the new one.
+            customSpan = true;                      // So we won't delete it.
+        }
+    }
+
+    function dispose () {
+        // First remove any classes
+        nod.removeClass(configuration.errorClass
+                        || nod.classes.errorClass, parent);
+        nod.removeClass(configuration.successClass
+                        || nod.classes.successClass, parent);
+
+        // Then we remove the span if it wasn't one that was set by the user.
+        // If `noDom` was used, then there won't be any to remove.
+        if (span.parentNode && !customSpan) {
+            span.parentNode.removeChild(span);
+        }
+    }
+
+    return {
+        subscribeTo:        subscribeTo,
+        element:            element,
+        setMessageOptions:  setMessageOptions,
+        dispose:            dispose,
+        set:                set
+    };
+};
+
+nod.makeEventEmitter = function (mediator) {
+    var customEvent;
+
+    function emit (options) {
+        if (CustomEvent) {
+            customEvent = new CustomEvent('nod.validation', {detail: options});
+
+            options.element.dispatchEvent(customEvent);
+        } else {
+            var errorMsg = 'nod.validate tried to fire a custom event, but ' +
+                           'the browser does not support CustomEvent\'s';
+
+            throw Error(errorMsg);
+        }
+    }
+
+    function subscribe (id) {
+        mediator.subscribe(id, emit);
+    }
+
+    return {
+        subscribe: subscribe
+    };
+};
+
+/**
+ * getElement
+ *
+ * Returns the first element targeted by the selector. (see `getElements`)
+ */
+nod.getElement = function (selector) {
+    return nod.getElements(selector)[0];
+};
+
+/**
+ * getElements
+ *
+ * Takes some sort of selector, and returns an array of element(s). The applied
+ * selector can be one of:
+ *
+ * - Css type selector (e.g., ".foo")
+ * - A jQuery element (e.g., $('.foo))
+ * - A single raw dom element (e.g., document.getElementById('foo'))
+ * - A list of raw dom element (e.g., $('.foo').get())
+ */
+nod.getElements = function (selector) {
+    if (!selector) {
+        return [];
+    }
+
+    // Normal css type selector is assumed
+    if (typeof selector === 'string') {
+        // If we have jQuery, then we use that to create a dom list for us.
+        if (__webpack_provided_window_dot_jQuery) {
+            return __webpack_provided_window_dot_jQuery(selector).get();
+        }
+
+        // If not, then we do it the manual way.
+        var nodeList = document.querySelectorAll(selector);
+
+        return [].map.call(nodeList, function (el) {
+            return el;
+        });
+    }
+
+    // if user gave us jQuery elements
+    if (selector.jquery) {
+        return selector.get();
+    }
+
+    // Raw DOM element
+    if (selector.nodeType === 1) {
+        return [selector];
+    }
+
+    if (Array.isArray(selector)) {
+        var result = [];
+
+        selector.forEach(function (sel) {
+            var elements = nod.getElements(sel);
+
+            result = result.concat(elements);
+        });
+
+        return result;
+    }
+
+    throw Error('Unknown type of elements in your `selector`: ' + selector);
+};
+
+nod.getCheckFunction = function (metric) {
+    if (typeof metric.validate === 'function') {
+        return metric.validate;
+    }
+
+    if (metric.validate instanceof RegExp) {
+        return nod.checkFunctions.regexp(metric.validate);
+    }
+
+    var args   = metric.validate.split(':'),
+        fnName = args.shift();
+
+    if (fnName === 'one-of' || fnName === 'only-one-of' ||
+        fnName === 'same-as' || fnName === 'some-radio') {
+        args.push(metric.selector);
+    }
+
+    if (typeof nod.checkFunctions[fnName] === 'function') {
+        return nod.checkFunctions[fnName].apply(null, args);
+    } else {
+        var errorMsg = 'Couldn\'t find your validator function "' +
+                       fnName + '" for "' + metric.selector + '"';
+
+        throw Error(errorMsg);
+    }
+};
+
+// Collection of built-in check functions
+nod.checkFunctions = {
+    'presence': function () {
+        return function presence (callback, value) {
+            callback(value.length > 0);
+        };
+    },
+
+    'exact': function (exactValue) {
+        return function exact (callback, value) {
+            callback(value === exactValue);
+        };
+    },
+
+    'contains': function (containsValue) {
+        return function contains (callback, value) {
+            callback(value.indexOf(containsValue) > -1);
+        };
+    },
+
+    'not': function (exactValue) {
+        return function not (callback, value) {
+            callback(value !== exactValue);
+        };
+    },
+
+    'min-length': function (minimumLength) {
+        return function minLength (callback, value) {
+            callback(value.length >= minimumLength);
+        };
+    },
+
+    'max-length': function (maximumLength) {
+        return function maxLength (callback, value) {
+            callback(value.length <= maximumLength);
+        };
+    },
+
+    'exact-length': function (exactLen) {
+        return function exactLength (callback, value) {
+            callback(value.length === +exactLen);
+        };
+    },
+
+    'between-length': function (minimumLength, maximumLength) {
+        return function betweenLength (callback, value) {
+            var aboveMinLength = value.length >= minimumLength,
+                belowMaxLength = value.length <= maximumLength;
+
+            callback(aboveMinLength && belowMaxLength);
+        };
+    },
+
+    'max-number': function (maximumNumber) {
+        return function maxNumber (callback, value) {
+            callback(+value <= maximumNumber);
+        };
+    },
+
+    'min-number': function (minimumNumber) {
+        return function minNumber (callback, value) {
+            callback(+value >= minimumNumber);
+        };
+    },
+
+    'between-number': function (minimumNumber, maximumNumber) {
+        return function betweenNumber (callback, value) {
+            callback(+value >= minimumNumber && +value <= maximumNumber);
+        };
+    },
+
+    'integer': function () {
+        return function (callback, value) {
+            callback(/^\s*\d+\s*$/.test(value));
+        };
+    },
+
+    'float': function () {
+        return function (callback, value) {
+            callback(/^[-+]?[0-9]+(\.[0-9]+)?$/.test(value));
+        };
+    },
+
+    'same-as': function (selector) {
+        var sameAsElement = nod.getElement(selector);
+
+        return function sameAs (callback, value, options) {
+            // 'same-as' is special, in that if it is triggered by another field
+            // (the one it should be similar to), and the field itself is empty,
+            // then it bails out without a check. This is to avoid showing an
+            // error message before the user has even reached the element.
+            if (options &&
+                options.event &&
+                options.event.target &&
+                options.event.target !== options.element &&
+                value.length === 0) {
+                return;
+            }
+
+            callback(value === sameAsElement.value);
+        };
+    },
+
+    'one-of': function (selector) {
+        var elements = nod.getElements(selector);
+
+        function getValues () {
+            return elements.reduce(function (memo, element) {
+                return memo + '' + (element.value || '');
+            }, '');
+        }
+
+        return function oneOf (callback) {
+            callback(getValues().trim().length > 0);
+        };
+    },
+
+    'only-one-of': function (selector) {
+        var elements = nod.getElements(selector);
+
+        return function onlyOneOf (callback, value) {
+            var numOfValues = 0;
+
+            elements.forEach(function (element) {
+                if (element.value) {
+                    numOfValues++;
+                }
+            });
+
+            callback(numOfValues === 1);
+        };
+    },
+
+    'checked': function () {
+        return function checked (callback, value, options) {
+            callback(options.element.checked);
+        };
+    },
+
+    'some-radio': function (selector) {
+        var radioElements = nod.getElements(selector);
+
+        return function someRadio (callback, value, options) {
+            var result = radioElements.reduce(function (memo, element) {
+                return memo || element.checked;
+            }, false);
+
+            callback(result);
+        };
+    },
+
+    'regexp': function (reg) {
+        return function regExp (callback, value) {
+            callback(reg.test(value));
+        };
+    },
+
+    'email': function () {
+        var RFC822 = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/;
+
+        return function email (callback, value) {
+            callback(RFC822.test(value));
+        };
+    }
+};
+
+// CustomEvent polyfill for older IE versions. Taken from
+// github.com/d4tocchini/customevent-polyfill/blob/master/CustomEvent.js
+try {
+    new CustomEvent("test");
+} catch (e) {
+    var CustomEvent = function (event, params) {
+        var evt;
+        params = params || {
+            bubbles: false,
+            cancelable: false,
+            detail: undefined
+        };
+
+        evt = document.createEvent("CustomEvent");
+        evt.initCustomEvent(event,
+                            params.bubbles,
+                            params.cancelable,
+                            params.detail);
+        return evt;
+    };
+
+    CustomEvent.prototype = window.Event.prototype;
+    window.CustomEvent = CustomEvent;
+}
+
+// Safely export nod.
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = nod;
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+
+/***/ 47:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_foundation__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_foundation___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_foundation_sites_js_foundation_foundation__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_foundation_reveal__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_foundation_reveal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_foundation_sites_js_foundation_foundation_reveal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common_nod__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__page_manager__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__bigcommerce_stencil_utils__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__global_modal__ = __webpack_require__(96);
+function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError('Cannot call a class as a function')}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called')}return call&&(typeof call==='object'||typeof call==='function')?call:self}function _inherits(subClass,superClass){if(typeof superClass!=='function'&&superClass!==null){throw new TypeError('Super expression must either be null or a function, not '+typeof superClass)}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass}var WishList=function(_PageManager){_inherits(WishList,_PageManager);function WishList(){_classCallCheck(this,WishList);var _this=_possibleConstructorReturn(this,_PageManager.call(this));_this.options={template:'account/add-wishlist'};return _this}/**
+     * Creates a confirm box before deleting all wish lists
+     */WishList.prototype.wishlistDeleteConfirm=function wishlistDeleteConfirm(){var _this2=this;__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').on('click','[data-wishlist-delete]',function(event){var confirmed=confirm(_this2.context.wishlistDelete);if(confirmed){return true}event.preventDefault()})};WishList.prototype.registerAddWishListValidation=function registerAddWishListValidation($addWishlistForm){var _this3=this;this.addWishlistValidator=__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__common_nod__["a" /* default */])({submit:'.wishlist-form input[type="submit"]'});this.addWishlistValidator.add([{selector:'.wishlist-form input[name="wishlistname"]',validate:function validate(cb,val){var result=val.length>0;cb(result)},errorMessage:'You must enter a wishlist name.'}]);$addWishlistForm.submit(function(event){_this3.addWishlistValidator.performCheck();if(_this3.addWishlistValidator.areAll('valid')){return}event.preventDefault()})};WishList.prototype.wishListHandler=function wishListHandler(){var _this4=this;__WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').on('click','[data-wishlist]',function(event){var wishListUrl=event.currentTarget.href;var modal=__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__global_modal__["a" /* defaultModal */])();event.preventDefault();modal.open();__WEBPACK_IMPORTED_MODULE_5__bigcommerce_stencil_utils__["a" /* api */].getPage(wishListUrl,_this4.options,function(err,content){if(err){return modal.updateContent(err)}modal.updateContent(content,{wrap:true});var $wishlistForm=__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.wishlist-form',modal.$content);_this4.registerAddWishListValidation($wishlistForm)})})};WishList.prototype.loaded=function loaded(next){var $addWishListForm=__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.wishlist-form');if($addWishListForm.length){this.registerAddWishListValidation($addWishListForm)}this.wishlistDeleteConfirm();this.wishListHandler();next()};return WishList}(__WEBPACK_IMPORTED_MODULE_4__page_manager__["a" /* default */]);/* harmony default export */ __webpack_exports__["default"] = (WishList);
+
+/***/ })
+
+});
+//# sourceMappingURL=theme-bundle.chunk.1.js.map

@@ -1,0 +1,174 @@
+
+.product-builder-banner {
+    display:             flex;
+    justify-content:     space-between;
+    align-items:         center;
+    width:               100vw;
+    height:              300px;
+    margin-left:         calc(50% - 50vw);
+    padding-top:         90px;
+    padding-bottom:      90px;
+    text-align:          center;
+    background-image:    url('../img/img-build-box-promo.jpg');
+    background-repeat:   repeat no-repeat;
+    background-position: center;
+
+    > * {
+        flex-basis: 30%;
+
+        @media (max-width: 771px) {
+            flex-basis: 100%;
+        }
+    }
+
+    @media (min-width: 771px) and (max-width: 1300px) {
+        .product-bilder-banner--central {
+            flex-basis: 40%;
+        }
+    }
+
+    p {
+        margin-bottom:  0;
+        font-family:    PTMono-Bold;
+        font-size:      18px;
+        font-weight:    bold;
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
+        color:          #000000;
+    }
+
+    @media (max-width: 771px) {
+        > p {
+            display: none;
+        }
+    }
+
+    strong {
+            display:       block;
+            margin-bottom: 20px;
+            font-family:   Futura-Bold;
+            font-size:     44px;
+            line-height:   48px;
+            color:         #000000;
+
+        & + p {
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 771px) {
+            & + p {
+                display: none;
+            }
+        }
+    }
+}
+
+.productView-secondardy-description {
+    padding-left:  1rem;
+    padding-right: 1rem;
+
+    .product-shipping-container {
+        border-top: solid black;
+        border-bottom: solid black;
+        margin-bottom: 0;
+    }
+
+    .products-allergies-container {
+        border-bottom: solid black;
+        margin-top: 0;
+    }
+
+    h3 {
+        padding:        0;
+        margin-top:     0;
+        margin-bottom:  0;
+    }
+
+    h3 label {
+        width:          100%;
+        display:        flex;
+        align-items:    center;
+        padding-top:    20px;
+        padding-bottom: 20px;
+        font-family:    Futura-Bold;
+        font-size:      20px;
+        font-weight:    normal;
+        text-transform: uppercase;
+        color:          #000000;
+        letter-spacing: 0.91px;
+    }
+
+    .plus-icon {
+        font-family:      Futura-Bold;
+        font-size:        30px;
+        line-height:      36px;
+        color:            #000000;
+        transform-origin: center;
+        transition:       transform 0.2s linear;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+
+        & + h3 + .description_section { display: none }
+    }
+
+    input[type="checkbox"]:checked {
+
+        & ~ h3 label .plus-icon { transform: rotate(-45deg); }
+
+        & + h3 + .description_section { display: block }
+    }
+
+    .description_section {
+        font-family: Futura-Book;
+        font-size:   18px;
+        line-height: 26px;
+        color:       #000000;
+    }
+
+    table {
+        width:         100%;
+        margin-bottom: 40px;
+
+        thead {
+            border-bottom: dashed;
+        }
+
+        th {
+            padding-bottom: 8px;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        th, td {
+            padding-left:   5px;
+            font-family:    PTMono-Bold;
+            font-size:      14px;
+            font-weight:    bold;
+            letter-spacing: 1px;
+            color:          #000000;
+        }
+
+        td {
+            padding-top:   25px;
+            padding-right: 1rem;
+        }
+    }
+}
+
+
+#tab-related,
+#tab-similar {
+    .button--small {
+        font-size:   16px !important;
+        line-height: 18px !important;
+        padding:     16px !important;
+    }
+}
+
+
+#form-action-addToCart {
+    padding:     17px;
+    font-weight: normal;
+}

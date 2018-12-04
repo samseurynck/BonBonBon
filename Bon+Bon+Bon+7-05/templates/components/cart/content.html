@@ -1,0 +1,207 @@
+<table class="cart" data-cart-quantity="{{cart.quantity}}">
+    <thead class="cart-header">
+        <tr>
+            <th class="cart-header-item" colspan="2">{{lang 'cart.checkout.item'}}</th>
+            <th class="cart-header-item">{{lang 'cart.checkout.price'}}</th>
+            <th class="cart-header-item cart-header-quantity">{{lang 'cart.checkout.quantity'}}</th>
+            <th class="cart-header-item">{{lang 'cart.checkout.total'}}</th>
+        </tr>
+    </thead>
+    <tbody class="cart-list">
+        {{#each cart.items}}
+            <tr class="cart-item" data-item-row>
+                <td class="cart-item-block cart-item-figure" {{#if show_gift_wrapping}}rowspan="2"{{/if}}>
+                    {{#if type '==' 'GiftCertificate'}}
+                        <img class="cart-item-fixed-image" src="{{cdn ../../theme_settings.default_image_gift_certificate}}" alt="GiftCertificate" title="GiftCertificate">
+                    {{else}}
+                        <img class="cart-item-image" src="{{getImage image 'gallery_size' (cdn ../../theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                    {{/if}}
+                </td>
+                <td class="cart-item-block cart-item-title">
+                    {{#if brand.name}}
+                        <p class="cart-item-brand">{{brand.name}}</p>
+                    {{/if}}
+                    <h4 class="cart-item-name">
+                        <a href="{{url}}">{{name}}</a>
+                    </h4>
+                    {{#if release_date}}
+                        <p>({{release_date}})</p>
+                    {{/if}}
+
+                    {{#if configurable_fields}}
+                        <dl class="definitionList">
+                            {{#each configurable_fields}}
+                                <dt class="definitionList-key">{{name}}:</dt>
+                                <dd class="definitionList-value">
+                                    {{#if is_file}}
+                                        <a href="/viewfile.php?prodfield={{../id}}&cartitem={{../../id}}">{{{value}}}</a>
+                                    {{else}}
+                                        {{{value}}}
+                                    {{/if}}
+                                </dd>
+                            {{/each}}
+                        </dl>
+                    {{/if}}
+
+                    {{#if options}}
+                        <dl class="definitionList">
+                            {{#each options}}
+                                <dt class="definitionList-key">{{name}}:</dt>
+                                <dd class="definitionList-value">
+                                    {{#if is_file}}
+                                        <a href="/viewfile.php?attributeId={{../id}}&cartitem={{../../id}}">{{{value}}}</a>
+                                    {{else}}
+                                        {{{value}}}
+                                    {{/if}}
+                                </dd>
+                            {{/each}}
+                        </dl>
+                    {{/if}}
+
+                    {{#or options configurable_fields}}
+                        {{#if name '==' 'CUSTOM BON BOX'}}
+                        {{else}}
+                            <a href="#" data-item-edit="{{id}}">{{lang 'cart.checkout.change'}}</a>
+                        {{/if}}
+                    {{/or}}
+
+                    {{#if type '==' 'GiftCertificate'}}
+                        <a href="{{edit_url}}">{{lang 'cart.checkout.change'}}</a>
+                    {{/if}}
+
+                    {{#if event_date}}
+                        <dl class="cart-item-options">
+                            <dt class="cart-item-option-title">
+                                {{event_date.name}}
+                            </dt>
+
+                            <dd class="cart-item-option-description">
+                                {{event_date.date}}
+                            </dd>
+                        </dl>
+                    {{/if}}
+
+                </td>
+                <td class="cart-item-block cart-item-info">
+                    <span class="cart-item-label">{{lang 'cart.checkout.price'}}</span>
+                    {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                        <span class="cart-item-value {{#if price_discounted}}price--discounted{{/if}}">{{price.formatted}}</span>
+                        {{#if price_discounted}}
+                            <span class="cart-item-value">{{price_discounted.formatted}}</span>
+                        {{/if}}
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}}
+                </td>
+
+                <td class="cart-item-block cart-item-info cart-item-quantity">
+
+                    <label class="form-label cart-item-label" for="qty-{{id}}">{{lang 'products.quantity'}}</label>
+                    <div class="form-increment">
+                        {{# if can_modify}}
+                            <button class="button button--icon" data-cart-update data-cart-itemid="{{id}}" data-action="inc">
+                                <svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>Up</title>
+                                    <g id="Big-Commerce-Shop-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="Product-Page---Bons" transform="translate(-1177.000000, -778.000000)" stroke-width="2" stroke="#000000">
+                                            <g id="Quantity" transform="translate(1086.000000, 778.000000)">
+                                                <g id="UI/Quantity" transform="translate(91.000000, 0.000000)">
+                                                    <g id="Up">
+                                                        <rect id="Rectangle-5" x="1" y="1" width="23" height="22" rx="6"></rect>
+                                                        <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="17 14 12.49088 9 8 14"></polyline>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <!-- <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+                                <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-keyboard-arrow-up" /></svg></i> -->
+                            </button>
+                        {{/if}}
+                        <input class="form-input form-input--incrementTotal"
+                               id="qty-{{id}}"
+                               name="qty-{{id}}"
+                               type="tel"
+                               value="{{quantity}}"
+                               data-quantity-min="{{min_purchase_quantity}}"
+                               data-quantity-max="{{max_purchase_quantity}}"
+                               data-quantity-min-error="{{lang 'products.quantity_min' quantity=min_purchase_quantity}}"
+                               data-quantity-max-error="{{lang 'products.quantity_max' quantity=max_purchase_quantity}}"
+                               min="1"
+                               pattern="[0-9]*"
+                               aria-live="polite"{{#unless can_modify}} disabled{{/unless}}>
+                        {{# if can_modify}}
+                            <button class="button button--icon" data-cart-update data-cart-itemid="{{id}}" data-action="dec">
+                                <svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>Down</title>
+                                    <g id="Big-Commerce-Shop-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="Product-Page---Bons" transform="translate(-1241.000000, -778.000000)" stroke="#000000" stroke-width="2">
+                                            <g id="Quantity" transform="translate(1086.000000, 778.000000)">
+                                                <g id="UI/Quantity" transform="translate(91.000000, 0.000000)">
+                                                    <g id="Down" transform="translate(76.500000, 12.000000) scale(1, -1) translate(-76.500000, -12.000000) translate(64.000000, 0.000000)">
+                                                        <rect id="Rectangle-5" x="1" y="1" width="23" height="22" rx="6"></rect>
+                                                        <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="17 14 12.49088 9 8 14"></polyline>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <!-- <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+                                <i class="icon" aria-hidden="true"><svg><use xlink:href="#icon-keyboard-arrow-down" /></svg></i> -->
+                            </button>
+                        {{/if}}
+                    </div>
+
+                </td>
+
+                <td class="cart-item-block cart-item-info">
+                    <span class="cart-item-label">{{lang 'cart.checkout.total'}}</span>
+                    {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                        <strong class="cart-item-value {{#if total_discounted}}price--discounted{{/if}}">{{total.formatted}}</strong>
+                        {{#if total_discounted}}
+                            <strong class="cart-item-value">{{total_discounted.formatted}}</strong>
+                        {{/if}}
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}}
+                    {{# if can_modify}}
+                        <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
+                            <svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>UI/X Remove</title>
+                                <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g id="UI/X-Remove">
+                                        <circle id="Oval-4" fill="#E35737" transform="translate(9.500000, 9.500000) rotate(-45.000000) translate(-9.500000, -9.500000) " cx="9.5" cy="9.5" r="9.5"></circle>
+                                        <path d="M11.125,7.875 L11.125,3 L7.875,3 L7.875,7.875 L3,7.875 L3,11.125 L7.875,11.125 L7.875,16 L11.125,16 L11.125,11.125 L16,11.125 L16,7.875 L11.125,7.875 Z" id="Combined-Shape" fill="#FFFFFF" transform="translate(9.500000, 9.500000) rotate(-45.000000) translate(-9.500000, -9.500000) "></path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </a>
+                    {{else}}
+                        {{#if type '==' 'GiftCertificate'}}
+                            <a class="cart-remove icon" data-cart-itemid="{{id}}" href="#" data-confirm-delete="{{lang 'cart.confirm_delete'}}">
+                                <svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <title>UI/X Remove</title>
+                                    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="UI/X-Remove">
+                                            <circle id="Oval-4" fill="#E35737" transform="translate(9.500000, 9.500000) rotate(-45.000000) translate(-9.500000, -9.500000) " cx="9.5" cy="9.5" r="9.5"></circle>
+                                            <path d="M11.125,7.875 L11.125,3 L7.875,3 L7.875,7.875 L3,7.875 L3,11.125 L7.875,11.125 L7.875,16 L11.125,16 L11.125,11.125 L16,11.125 L16,7.875 L11.125,7.875 Z" id="Combined-Shape" fill="#FFFFFF" transform="translate(9.500000, 9.500000) rotate(-45.000000) translate(-9.500000, -9.500000) "></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </a>
+                        {{/if}}
+                    {{/if}}
+                </td>
+            </tr>
+            {{#if show_gift_wrapping}}
+                <tr class="personal-note-row">
+                    <td colspan="4">
+                        {{> components/cart/item-giftwrap this}}
+                    </td>
+                </tr>
+            {{/if}}
+        {{/each}}
+    </tbody>
+</table>

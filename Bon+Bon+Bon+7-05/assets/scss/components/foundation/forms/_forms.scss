@@ -1,0 +1,75 @@
+// =============================================================================
+// FORMS (CSS)
+// =============================================================================
+
+
+// Select boxes
+// -----------------------------------------------------------------------------
+
+.form-select {
+    appearance: none;
+    // background-image: $select-backgroundImage;
+    background-image:    url('../icons/select-triangle-down.svg');
+    background-position: right 1rem center;
+    border-radius:       0;
+    padding:             $select-padding;
+    height:              50px;
+    font-family:         PTMono-Bold;
+    font-size:           16px;
+    letter-spacing:      0;
+    color:               #000000;
+
+    // &:hover {
+    //     border-color: $select-hover-borderColor;
+    // }
+}
+
+
+// Form labels
+// -----------------------------------------------------------------------------
+
+.form-label {
+
+    small {
+        float: $opposite-direction;
+        margin-top: $form-label-small-marginTop;
+    }
+}
+
+
+// Form labels (inline small text)
+// -----------------------------------------------------------------------------
+
+.form-label--inlineSmall {
+
+    small {
+        color: stencilColor("color-textSecondary");
+        float: none;
+        font-size: inherit;
+        font-weight: fontWeight("normal");
+        margin-left: spacing("quarter");
+        text-transform: none;
+    }
+}
+
+.form-input {
+    font-family:    PTMono-Bold;
+    font-size:      16px;
+    font-weight:    bold;
+    letter-spacing: 0;
+    color:          #000000;
+}
+
+.forgot-password {
+    display:         block;
+    margin-top:      1.5rem;
+    font-family:     Futura-Bold;
+    font-weight:     normal;
+    text-transform:  uppercase;
+    text-decoration: none;
+    color:           black;
+
+    &:hover {
+        color: #e9b3b3;
+    }
+}

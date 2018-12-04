@@ -1,0 +1,79 @@
+
+<div class="alertBox productAttributes-message" style="display:none">
+    <div class="alertBox-column alertBox-icon">
+        <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg></icon>
+    </div>
+    <p class="alertBox-column alertBox-message"></p>
+</div>
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    <div class="form-action">
+        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--primary" type="submit"
+            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+    </div>
+     {{{snippet 'product_addtocart'}}}
+{{/or}}
+<div class="form-field form-field--increments">
+    <label class="form-label form-label--alternate"
+           for="qty[]">{{lang 'products.quantity'}}</label>
+
+    <div class="form-increment" data-quantity-change>
+
+        <button class="button button--icon" data-action="inc">
+            <svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Up</title>
+                <g id="Big-Commerce-Shop-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Product-Page---Bons" transform="translate(-1177.000000, -778.000000)" stroke-width="2" stroke="#000000">
+                        <g id="Quantity" transform="translate(1086.000000, 778.000000)">
+                            <g id="UI/Quantity" transform="translate(91.000000, 0.000000)">
+                                <g id="Up">
+                                    <rect id="Rectangle-5" x="1" y="1" width="23" height="22" rx="6"></rect>
+                                    <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="17 14 12.49088 9 8 14"></polyline>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <!-- <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+            <i class="icon" aria-hidden="true">
+                <svg>
+                    <use xlink:href="#icon-keyboard-arrow-up"/>
+                </svg>
+            </i> -->
+        </button>
+        <input class="form-input form-input--incrementTotal"
+               id="qty[]"
+               name="qty[]"
+               type="tel"
+               value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+               data-quantity-min="{{product.min_purchase_quantity}}"
+               data-quantity-max="{{product.max_purchase_quantity}}"
+               min="1"
+               pattern="[0-9]*"
+               aria-live="polite">
+        <button class="button button--icon" data-action="dec">
+            <svg width="25px" height="24px" viewBox="0 0 25 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>Down</title>
+                <g id="Big-Commerce-Shop-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                    <g id="Product-Page---Bons" transform="translate(-1241.000000, -778.000000)" stroke="#000000" stroke-width="2">
+                        <g id="Quantity" transform="translate(1086.000000, 778.000000)">
+                            <g id="UI/Quantity" transform="translate(91.000000, 0.000000)">
+                                <g id="Down" transform="translate(76.500000, 12.000000) scale(1, -1) translate(-76.500000, -12.000000) translate(64.000000, 0.000000)">
+                                    <rect id="Rectangle-5" x="1" y="1" width="23" height="22" rx="6"></rect>
+                                    <polyline id="Path-2" stroke-linecap="round" stroke-linejoin="round" points="17 14 12.49088 9 8 14"></polyline>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <!-- <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+            <i class="icon" aria-hidden="true">
+                <svg>
+                    <use xlink:href="#icon-keyboard-arrow-down"/>
+                </svg>
+            </i> -->
+        </button>
+
+    </div>
+</div>

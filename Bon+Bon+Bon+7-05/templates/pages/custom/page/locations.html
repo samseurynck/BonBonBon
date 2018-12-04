@@ -1,0 +1,95 @@
+{{#partial "page"}}
+{{#each shipping_messages}}
+    {{> components/common/alert-info message}}
+{{/each}}
+
+<div class="main full">
+
+
+<!-- TODO: remove this script when open -->
+<script>
+    const $maintenanceNotice = document.getElementById ('maintenance-notice');
+    if ($maintenanceNotice) $maintenanceNotice.remove();
+</script>
+
+    <style>
+        .main.full {
+            width:          737px;
+            max-width:      100%;
+            padding-top:    4rem;
+            padding-bottom: 4rem;
+            margin-left:    auto;
+            margin-right:   auto;
+        }
+
+        .main h2 {
+            font-family: Futura-Bold;
+            font-size:   48px;
+            font-weight: normal;
+            color:       #000000;
+        }
+
+        @media (max-width: 551px) {
+            .main h2 {
+                font-size: 30px;
+            }
+        }
+
+        .main p {
+            font-family: Futura-Book;
+            font-size:   18px;
+            color:       #000000;
+            line-height: 26px;
+
+        }
+
+        @media (max-width: 551px) {
+            .main p {
+                font-size:   14px;
+                line-height: 20px;
+            }
+        }
+    </style>
+
+    <h1 class="page-heading">LOCATIONS</h1>
+
+    <p>
+        <img title="img-hamtramck-top.jpg" src="{{cdn 'img/articles/locations/img-hamtramck-top.jpg'}}" alt="img-hamtramck-top.jpg" width="737" height="320" />
+    </p>
+    <h2>Hamtramck Manufactory</h2>
+    <p>Our funky little flagship store in our hometown of Hamtramck, right in the heart of Detroit! Here, in the most diverse city
+        of the state with the second most diverse agricultural economy in the country, we think we are optimally situated to
+        create, explore flavors and hang with some of the coolest neighbors a chocolate shop could ever ask for! (Oloman! Fat
+        Salmon Sushi!)
+        <br />
+        <br />We are at the corner of Joseph Campau and Caniff, across from the Islamic Cultural Center and The Euromart.
+        <br />
+        <br />Monday-Saturday 11-6
+        <br />Sunday 11-3
+        <br />11360 Joseph Campau Ave., Hamtramck, MI 48212
+        <br />313-236-5581</p>
+    <p>
+        <img title="img-hamtramck-bottom.png" src="{{cdn 'img/articles/locations/img-hamtramck-bottom.png'}}" alt="img-hamtramck-bottom.png" width="737" height="577" />
+    </p>
+    <p>
+        <img title="img-detroit-top.jpg" src="{{cdn 'img/articles/locations/img-detroit-top.jpg'}}" alt="img-detroit-top.jpg" width="737" height="320" />
+    </p>
+    <h2>Downtown Detroit</h2>
+    <p>We bring fresh chocolate every day to our Downtown Detroit showroom, &nbsp;just a block away from the center of the city!
+        Find us at the corner of Fort &amp; Griswold (on the Fort Street side!) in the historic old Dime Building, now known
+        as &ldquo;The Chrysler House&rdquo;. Our tiny little shop is thrilled to make a chocolate-y little smudge on the history
+        of the downtown shopping district.
+        <br />
+        <br />To find us, look across Fort Street from The Penobscot Building, next to The Federal Reserve!
+        <br />
+        <br />Pro Tip: We are in the same building as The Dime Store and you don&rsquo;t want to miss their brunch!
+        <br />
+        <br />Monday-Friday 10-6
+        <br />Saturday-Sunday 10-3
+        <br />719 Griswold St., Suite 100, Detroit, MI 48226
+        <br />313-316-1430</p>
+    <p>
+        <img title="img-detroit-bottom.png" src="{{cdn 'img/articles/locations/img-detroit-bottom.png'}}" alt="img-detroit-bottom.png" width="737" height="577" />
+    </p>
+{{/partial}}
+{{> layout/base}}

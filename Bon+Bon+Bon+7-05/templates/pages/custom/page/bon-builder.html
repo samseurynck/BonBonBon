@@ -1,0 +1,409 @@
+{{#partial "page"}}
+    {{#each shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+<div class="main full">
+
+    <!-- This style rule is specific to this template -->
+    <style>
+        .body {
+            overflow-x: hidden;
+        }
+    </style>
+
+    <!-- TODO: remove this script when open -->
+    <script>
+        const $maintenanceNotice = document.getElementById ('maintenance-notice');
+        if ($maintenanceNotice) $maintenanceNotice.remove();
+    </script>
+
+    <div class="builder">
+
+        <iframe class="builder-custom-bon-iframe" src="/custom-bon-box/" frameborder="0"></iframe>
+
+        <div class="builder-fixed-header">
+            <a href="/">
+                <div class="builder-fixed-header-bon-name">BON BON BON</div>
+            </a>
+            <ul class="builder-menu">
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="/our-story/">Our History</a>
+                </li>
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="#">Bon Shop</a>
+                </li>
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="#">Gift Shop</a>
+                </li>
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="#">Locations</a>
+                </li>
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="/blog/">Blog</a>
+                </li>
+                <li class="navPages-item navPages-item-page">
+                    <a class="navPages-action" href="#">Contact & FAQs</a>
+                </li>
+            </ul>
+            <ul class="builder-aux-menu">
+                <li>
+                    <a href="#">HELP</a>
+                </li>
+                <li>
+                    <a href="/my-account.php">ACCOUNT</a>
+                </li>
+                <li>
+                    <a href="/cart.php">CART</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="builder-get-started-page">
+            <div class="builder-get-started">
+                <p>The Bon</p>
+                <p class="builder-box-box-box">Box Box Box</p>
+                <p>Builder</p>
+                <button class="button">Build a Box box box</button>
+            </div>
+            <div class="builder-get-started-footer">
+                {{> components/custom/builder/link-to-other-sections
+                    title="Have a large order?"
+                    href="/contact-us/#events-large-orders"
+                    linkText="Holla at us"
+                }}
+                {{> components/custom/builder/link-to-other-sections
+                    title="Just need a variety box?"
+                    href="/collections/"
+                    linkText="We got you"
+                }}
+            </div>
+        </div>
+
+        <!-- BUILDER SECTION -->
+        <div class="builder-custom-box builder-invisible">
+            <div class="builder-loader"></div>
+
+            <div class="builder-desktop-container">
+                <div class="builder-left" style="display: none;">
+                    <div class="builder-filters-container">
+                        <ul class="builder-filters-list">
+                            <li class="no-selectable">Filter</li>
+                            <li class="builder-selected-filter">All</li>
+                            <li>Milk</li>
+                            <li>Dark</li>
+                            <li>Caramel</li>
+                            <li>Avoids Gluten</li>
+                            <li>Nuts</li>
+                            <li>Vegan</li>
+                        </ul>
+                    </div>
+                    <div class="builder-category-grid">
+                        <!-- CONTENT ADDED DYNAMICALLY -->
+                    </div>
+                    <div class="builder-view-details-modal" style="display: none;">
+                        <div class="builder-view-details-container">
+                            <!-- CONTENT ADDED DYNAMICALLY -->
+                        </div>
+                    </div>
+                </div>
+                <div class="builder-right" style="display: none;">
+                    <h3>BONS IN YOUR BOX BOX BOX</h3>
+                    <div class="builder-custom-box-empty-container">
+                        <p>
+                            <strong>Bon-jour!</strong> Welcome to Bon Bon Bon’s Box Box Box Builder! We believe that you should build the box around a person, and not put a person in a box. Maybe that sounds a little silly, but we’re pretty serious about it!
+                        </p>
+                        <p>
+                            What we mean is, as you build the box, it will keep getting longer…up to 32 pieces. They’re $3 each, by the way. To get started, add any Bon from the left.
+                        </p>
+                    </div>
+                    <div class="builder-custom-box-list-container" style="display: none;">
+                        <!-- CONTENT ADDED DYNAMICALLY -->
+                    </div>
+
+                    <div class="builder-custom-footer">
+                        <button class="builder-add-one-random-button"><span class="builder-add-one-random-button--plus">+</span> Add One Random <span style="word-spacing: 4px;">&nbsp;&nbsp;</span>Bon!</button>
+                        <p class="builder-pricepoint">Pricepoint in mind?</p>
+                        <button class="builder-by-price">
+                            <span>Cost</span>
+                            <span class="build-by-ptice--price">$0</span>
+                        </button>
+                        <button class="button" disabled>REVIEW ORDER</button>
+                    </div>
+                </div>
+
+                <div class="builder-custom-box-by-price-modal" style="display: none;">
+                    <div class="builder-by-price-container">
+                        <button class="by-price-close-modal-button"></button>
+                        <h2>Trying to meet a certain price point? No worries!</h2>
+                        <p>We can randomly select bons to fill out the rest or whole box to meet your desired total cost! You will still be able to add and delete Bons.</p>
+                        <div class="by-price-select-wrapper">
+                            <select name="price-selecet" id="by-price-select">
+                                <option value="1">$3 (Box of 1 Bon)</option>
+                                <option value="2">$6 (Box of 2 Bons)</option>
+                                <option value="3">$9 (Box of 3 Bons)</option>
+                                <option value="4">$12 (Box of 4 Bons)</option>
+                                <option value="5">$15 (Box of 5 Bons)</option>
+                                <option value="6">$18 (Box of 6 Bons)</option>
+                                <option value="7">$21 (Box of 7 Bons)</option>
+                                <option value="8">$24 (Box of 8 Bons)</option>
+                                <option value="9">$27 (Box of 9 Bons)</option>
+                                <option value="10">$30 (Box of 10 Bons)</option>
+                                <option value="11">$33 (Box of 11 Bons)</option>
+                                <option value="12">$36 (Box of 12 Bons)</option>
+                                <option value="13">$39 (Box of 13 Bons)</option>
+                                <option value="14">$42 (Box of 14 Bons)</option>
+                                <option value="15">$45 (Box of 15 Bons)</option>
+                                <option value="16">$48 (Box of 16 Bons)</option>
+                                <option value="17">$51 (Box of 17 Bons)</option>
+                                <option value="18">$54 (Box of 18 Bons)</option>
+                                <option value="19">$57 (Box of 19 Bons)</option>
+                                <option value="20">$60 (Box of 20 Bons)</option>
+                                <option value="21">$63 (Box of 21 Bons)</option>
+                                <option value="22">$66 (Box of 22 Bons)</option>
+                                <option value="23">$69 (Box of 23 Bons)</option>
+                                <option value="24">$72 (Box of 24 Bons)</option>
+                                <option value="25">$75 (Box of 25 Bons)</option>
+                                <option value="26">$78 (Box of 26 Bons)</option>
+                                <option value="27">$81 (Box of 27 Bons)</option>
+                                <option value="28">$84 (Box of 28 Bons)</option>
+                                <option value="29">$87 (Box of 29 Bons)</option>
+                                <option value="30">$90 (Box of 30 Bons)</option>
+                                <option value="31">$93 (Box of 31 Bons)</option>
+                                <option value="32">$96 (Box of 32 Bons)</option>
+                            </select>
+                        </div>
+                        <button class="by-price-randomize button">Randomize</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="builder-mobile-container">
+                <div class="builder-mobile-elements" style="opacity: 0;">
+                    <div class="builder-instructions-block">
+                        <p>
+                            <strong>Bon-jour!</strong> Welcome to Bon Bon Bon’s Box Box Box Builder! We believe that you should build the box around a person, and not put a person in a box. Maybe that sounds a little silly, but we’re pretty serious about it!
+                        </p>
+                        <p>
+                            What we mean is, as you build the box, it will keep getting longer…up to 32 pieces. They’re $3 each, by the way. To get started, add any Bon from the left.
+                        </p>
+                    </div>
+                    <div class="builder-mobile-filter-bons">
+                        <p>FILTER BONS</p>
+                        <select name="mobile-filter-bons" id="mobile-filter-bons">
+                            <option value="all">All</option>
+                            <option value="milk">Milk</option>
+                            <option value="dark">Dark</option>
+                            <option value="caramel">Caramel</option>
+                            <option value="avoids gluten">Avoids Gluten</option>
+                            <option value="nuts">Nuts</option>
+                            <option value="vegan">Vegan</option>
+                        </select>
+                    </div>
+                    <div class="builder-mobile-category-grid">
+                        <div class="builder-mobile-category-grid--wrapper">
+                            <!-- CONTENT ADDED DYNAMICALLY -->
+                        </div>
+                    </div>
+                    <div class="builder-mobile-footer-container">
+                        <div class="builder-mobile-footer-total-cost">$0</div>
+                        <button class="builder-mobile-footer-view-box">VIEW BOX</button>
+                        <button class="button builder-mobile-footer-review-button" disabled>REVIEW</button>
+                    </div>
+                </div>
+
+                <div class="builder-mobile-view-details-container" style="display: none;">
+                    <div>
+                        <!-- CONTENT ADDED DYNAMICALLY -->
+                    </div>
+                </div>
+
+                <div class="builder-mobile-selected-bons-list-container" style="display: none;">
+                    <button class="builder-mobile-selected-back-button">
+                        <svg width="9px" height="14px" viewBox="0 0 9 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Tablet/Bon-Builder-Sidebar" transform="translate(-215.000000, -842.000000)" fill="#FFFFFF">
+                                    <g id="Group" transform="translate(54.000000, 841.000000)">
+                                        <polygon id="Triangle" transform="translate(165.500000, 8.000000) scale(-1, 1) translate(-165.500000, -8.000000) " points="161 8 170 1 170 15"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <span>BACK</span>
+                    </button>
+                    <h3>BONS IN YOUR BOX BOX BOX</h3>
+                    <div class="builder-mobile-selected-bons-list">
+                        <!-- CONTENT ADDED DYNAMICALLY -->
+                    </div>
+                    <div class="builder-mobile-selected-buttons-container">
+                        <button class="builder-add-one-random-button">1 Random Bon!</button>
+                        <button class="builder-mobile-price-point-button">PRICEPOINT ?</button>
+                    </div>
+                    <div class="builder-mobile-selected-list-footer-container">
+                        <div class="builder-mobile-selected-cost-container">COST $<span class="builder-mobile-selected-price">0</span></div>
+                        <button class="button builder-mobile-footer-review-button" disabled>REVIEW</button>
+                    </div>
+                </div>
+
+                <div class="builder-mobile-by-price-container" style="display: none;">
+                    <button class="by-price-close-modal-button"></button>
+                    <h2>Trying to meet a certain price point? No worries!</h2>
+                    <p>We can randomly select bons to fill out the rest or whole box to meet your desired total cost! You will still be able to add and delete Bons.</p>
+                    <div class="by-price-select-wrapper">
+                        <select name="price-selecet" id="by-price-select">
+                            <option value="1">$3 (Box of 1 Bon)</option>
+                            <option value="2">$6 (Box of 2 Bons)</option>
+                            <option value="3">$9 (Box of 3 Bons)</option>
+                            <option value="4">$12 (Box of 4 Bons)</option>
+                            <option value="5">$15 (Box of 5 Bons)</option>
+                            <option value="6">$18 (Box of 6 Bons)</option>
+                            <option value="7">$21 (Box of 7 Bons)</option>
+                            <option value="8">$24 (Box of 8 Bons)</option>
+                            <option value="9">$27 (Box of 9 Bons)</option>
+                            <option value="10">$30 (Box of 10 Bons)</option>
+                            <option value="11">$33 (Box of 11 Bons)</option>
+                            <option value="12">$36 (Box of 12 Bons)</option>
+                            <option value="13">$39 (Box of 13 Bons)</option>
+                            <option value="14">$42 (Box of 14 Bons)</option>
+                            <option value="15">$45 (Box of 15 Bons)</option>
+                            <option value="16">$48 (Box of 16 Bons)</option>
+                            <option value="17">$51 (Box of 17 Bons)</option>
+                            <option value="18">$54 (Box of 18 Bons)</option>
+                            <option value="19">$57 (Box of 19 Bons)</option>
+                            <option value="20">$60 (Box of 20 Bons)</option>
+                            <option value="21">$63 (Box of 21 Bons)</option>
+                            <option value="22">$66 (Box of 22 Bons)</option>
+                            <option value="23">$69 (Box of 23 Bons)</option>
+                            <option value="24">$72 (Box of 24 Bons)</option>
+                            <option value="25">$75 (Box of 25 Bons)</option>
+                            <option value="26">$78 (Box of 26 Bons)</option>
+                            <option value="27">$81 (Box of 27 Bons)</option>
+                            <option value="28">$84 (Box of 28 Bons)</option>
+                            <option value="29">$87 (Box of 29 Bons)</option>
+                            <option value="30">$90 (Box of 30 Bons)</option>
+                            <option value="31">$93 (Box of 31 Bons)</option>
+                            <option value="32">$96 (Box of 32 Bons)</option>
+                        </select>
+                    </div>
+                    <button class="by-price-randomize button">Randomize</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- REVIEW SECTION -->
+        <div class="builder-review-section builder-invisible">
+            <div class="container builder-review-container">
+                <a href="#" class="builder-back-to-edit">Back to Edit {{> components/custom/right-orange-caret }}</a>
+                <h1>Review your box</h1>
+                <div class="builder-review-summary-container">
+                    <div class="contents">
+                        <p>Selected Bons</p>
+                        <ul class="order-review-summary-list">
+                            <!-- CONTENT ADDED DYNAMICALLY -->
+                        </ul>
+                        <div class="order-review-summary-total-quantity"></div>
+                    </div>
+                    <div class="contents-total">
+                        <p>Your total</p>
+                        <p class="order-review-total-price">$18.00</p>
+                        <p class="order-review-guide-line">This total doesn't include shipping!</p>
+                        <p class="order-review-guide-line">Check out our shipping policy here along with average shipping costs.</p>
+                    </div>
+                </div>
+                <h2 class="review-yea-big">Your box will be yea big.</h2>
+                <div class="review-photos-container">
+                    <div>
+                        <img src="{{cdn 'img/bon_builder/review/img-fpo-box-size-1-BBB-122.jpg'}}" alt="Little girl holding a big Bon Bon Box above her head">
+                        <img src="{{cdn 'img/bon_builder/review/img-fpo-box-size-2-BBB-123.jpg'}}" alt="Little girl holding a big Bon Bon Box on her right shoulder">
+                        <img src="{{cdn 'img/bon_builder/review/img-fpo-box-size-3-BBB-181.jpg'}}" alt="A pile of Bon Bon boxes each with different length forming a pyramid">
+                    </div>
+
+                    <div class="review-photos-dots">
+                        <button class="review-photo-dot selected" data-dot-number="0"></button>
+                        <button class="review-photo-dot" data-dot-number="1"></button>
+                        <button class="review-photo-dot" data-dot-number="2"></button>
+                    </div>
+                </div>
+
+                <div class="review-vertical-space"></div>
+
+                  <!-- <h3>Add a personal message</h3>
+                  <p>Each note is handwritten to add that lil sum sum to your order.<br>
+                  We'll copy this text word for word on your order. <strong>Don't forget to add who's sending this box!</strong></p> -->
+                  <textarea name="review-personal-message-textarea" id="review-personal-message-textarea" cols="30" rows="10"></textarea>
+
+                  <h3>Any special notes or requests for us?</h3>
+                  <p>
+                      Want to let us know what you're plotting? Need a little help? Just want to say hi?<br>
+                      Here's your chance. Let us know anything that you might need us to know in order to fulfill your order!
+                  </p>
+                  <textarea name="review-special-note-textarea" id="review-special-note-textarea" maxlength="300" cols="30" rows="10" ></textarea>
+                  
+                  <!--<h3>Have a special request?</h3>-->
+                  <!--<p>-->
+                  <!--  Each note is hand written to add that lil somethin’ to your order! We’ll copy it word for word. <strong>Don’t forget to add who’s sending this box!</strong><br>If you need more room for your note, please e-mail your message to: shipping@bonbonbon.com. <br>No note? It’s ok! Use this spot to let us know if there’s anything you need to help make your order the most bon!</p>-->
+                  <!--  <p> Want to let us know what you're plotting? Need a little help? Just want to say hi?<br>-->
+                  <!--    Here's your chance. Let us know anything that you might need us to know in order to fulfill your order!</p>-->
+                  <!--<textarea name="review-special-note-textarea" id="review-special-note-textarea" maxlength="300" cols="30" rows="10" ></textarea>-->
+
+        </div>
+
+        <!-- SHIPPING SECTION -->
+        <div class="container builder-shipping-container builder-invisible">
+            <h2 class="builder-shipping-subtitle">Shipping & Packaging</h2>
+            <strong>The Good Ship Bon's Shipping Policy</strong>
+            <div class="shipping-content-container">
+                <div class="left-side">
+                    <p>Orders for in-store pickup Monday through Thursday will be ready in 24 hours. Orders Friday through Sunday will be ready Monday at 5pm.<p>
+                    <p>We ship every Monday, Tuesday, Wednesday and Thursday to anywhere in the United States using UPS. We will not ship over the weekend in order to avoid possibility of orders being held in warm shipping facilities or delivery trucks.</p>
+                    <p>If you need your order to be delivered on a certain date, please contact via phone or email so we can make the necessary arrangements for you. Please note, if your order is time sensitive, we can guarantee your chocolate arriving to UPS, and UPS guarantees it arrives on time.</p>
+                    <small>We cannot control the holding and transportation of your chocolate en route to you! We wish we could, but instead we must recommend that you ship responsibly for optimum product quality upon arrival! If there is a problem with your shipment, please contact UPS at (800) 742-5877.</small>
+                </div>
+                <div class="right-side">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order on</th>
+                                <th>Ships on</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>Tuesday</td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td>Wednesday</td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td>Thursday</td>
+                            </tr>
+                            <tr>
+                                <td>Thursday after 9am to Sunday</td>
+                                <td>The following Monday</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <small>If you're shipping Bons to a warm (70 degrees or above) we highly recommend overnight shipping. If overnight shipping is not selected at checkout, Bon Bon Bon cannot assume responsibility for melted Bons. If overnight shipping is selected for warm climate destinations, we will include ice packs and insulation for your order. Otherwise, we will assume that you are taking the risk of receiving melted chocolate.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUILDER FOOTER SECTION -->
+        <div class="builder-footer builder-invisible">
+            <div class="container builder-footer-container">
+                <p>One Box Box Box often leads to another! Need something else? Build another! All set? Check out!</p>
+                <button class="button button-secondary">Build Another!</button>
+                <button class="button checkout-button">Check out</button>
+            </div>
+        </div>
+
+        <!-- BIGCOMMERCE INFORMATION -->
+        <div class="bigcommerce-information" style="display: none;">{{customer.id}}</div>
+        <div class="bigcommerce-information--endpoint" style="display: none;">{{theme_settings.endpoint}}</div>
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}
