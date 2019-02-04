@@ -1,0 +1,18 @@
+<div class="bon-box-container">
+    <div class="bon-first-top-container">
+        <a href="{{href}}" class="bon-view-details">View details</a>
+        <div class="bon-image-container" data-current="true">
+            <img src="{{cdn image1}}" alt="{{altImage1}}">
+            {{#if faves}}
+                <div class="bon-box-faves-marker"></div>
+            {{/if}}
+            {{#if detroit}}
+                <div class="bon-box-detroit-classics-marker"></div>
+            {{/if}}
+        </div>
+    </div>
+    <p class="bon-index">{{index}}</p>
+    <h4 class="bon-name">{{name}}</h4>
+    <div class="bon-dummy"></div>
+    <button>Add to Box</button>
+</div>

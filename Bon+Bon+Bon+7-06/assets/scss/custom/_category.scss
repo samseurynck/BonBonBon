@@ -1,0 +1,38 @@
+
+.category-bonbonbon-container {
+    position: relative;
+
+    > img {
+        position: absolute;
+        right:    -50px;
+        top:      -10px;
+    }
+
+    .box-box-box-builder-button {
+        display:           block;
+        position:          absolute;
+        top:               -40px;
+        right:             -140px;
+        width:             185px;
+        height:            185px;
+        background-image:  url('../img/homepage/ui-boxboxbox-btn@2x.png');
+        background-repeat: no-repeat;
+        background-size:   170px;
+        transition:        transform 0.3s ease-in;
+        transform:         translate(0px);
+        z-index:           19;
+
+        @media (max-width: 1200px) {
+            top:   -10px;
+            right: 0px;
+        }
+
+        &:hover {
+            background-image: url('../img/homepage/ui-boxboxbox-btn-hover@2x.png');
+        }
+
+        @media (max-width: 551px) {
+            display: none;
+        }
+    }
+}

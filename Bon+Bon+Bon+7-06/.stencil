@@ -1,0 +1,12 @@
+{
+  "normalStoreUrl": "https://bonbonbon.com/",
+  "port": 3000,
+  "clientId": "sx55w07f12t1fnsb2udy6zn147wkck5",
+  "accessToken": "kry1ils1uzt600xoby8a8zoamw4ia11",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  }
+}

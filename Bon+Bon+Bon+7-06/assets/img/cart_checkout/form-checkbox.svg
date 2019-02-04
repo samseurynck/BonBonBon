@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <rect id="form-checkbox-a" width="21" height="21"/>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <use fill="#FFF" xlink:href="#form-checkbox-a"/>
+    <rect width="20" height="20" x=".5" y=".5" stroke="#000"/>
+  </g>
+</svg>
