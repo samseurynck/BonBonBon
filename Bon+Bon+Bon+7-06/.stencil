@@ -6,7 +6,13 @@
   "customLayouts": {
     "brand": {},
     "category": {},
-    "page": {},
+    "page": {
+      "about": "/about/",
+      "bon-builder": "/bon-builder/",
+      "contact-us": "/contact-us/",
+      "locations": "/locations/",
+      "shop-bonline": "/shop-bonline/"
+    },
     "product": {}
   }
 }
